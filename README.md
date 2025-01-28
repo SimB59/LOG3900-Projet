@@ -1,10 +1,13 @@
-# LOG2990 - Code de base
+# LOG3990
+Avec la collaboration de
+https://github.com/SidneyGharib
+https://github.com/jeromechabot
+https://github.com/mo-lk
 
-Code de base à utiliser pour démarrer le développement de votre projet.
 Le code contient 2 projets séparés :
 
 -   client : le site Web fait avec le cadriciel(_framework_) **Angular**.
--   serveur : le serveur dynamique bâti avec la librairie **Express** ou **NestJs** ([selon votre choix](#choix-du-serveur)).
+-   serveur : le serveur dynamique bâti avec la librairie **NestJs**.
 
 # Commandes npm
 
