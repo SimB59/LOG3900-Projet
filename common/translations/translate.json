@@ -1,0 +1,962 @@
+{
+    "Abandon game": {
+        "en": "Abandon game",
+        "fr": "Abandonner la partie"
+    },
+    "Abandon game message": {
+        "en": "Are you sure you want to abandon the game and return to the main menu?",
+        "fr": "Êtes-vous certain de vouloir abandonner la partie et retourner au menu principal ?"
+    },
+    "Accept": {
+        "en": "Accept",
+        "fr": "Accepter"
+    },
+    "Account creation": {
+        "en": "Account creation",
+        "fr": "Création du compte"
+    },
+    "All players": {
+        "en": "All players",
+        "fr": "Tous les joueurs"
+    },
+    "Activity": {
+        "en": "Activity",
+        "fr": "Activité"
+    },
+    "and": {
+        "en": "and",
+        "fr": "et"
+    },
+    "Apply drawing to the opposite canvas": {
+        "en": "Apply drawing to the opposite canvas",
+        "fr": "Appliquer le dessin à la fiche opposée"
+    },
+    "Apply modifications": {
+        "en": "Apply modifications",
+        "fr": "Appliquer les modifications"
+    },
+    "Are you sure you want to delete all game cards?": {
+        "en": "Are you sure you want to delete all game cards?",
+        "fr": "Êtes-vous certain de vouloir supprimer toutes les fiches de jeu?"
+    },
+    "Arrow to interchange": {
+        "en": "Arrow to interchange",
+        "fr": "Flèche pour interchanger"
+    },
+    "Authentication": {
+        "en": "Authentication",
+        "fr": "Authentification"
+    },
+    "Back": {
+        "en": "Back",
+        "fr": "Retour"
+    },
+    "Block a player": {
+        "en": "Block a player",
+        "fr": "Bloquer un joueur"
+    },
+    "Block a player confirmation message": {
+        "en": "Are you sure you want to block the player",
+        "fr": "Êtes-vous certain de vouloir bloquer le joueur"
+    },
+    "Block player": {
+        "en": "Block player",
+        "fr": "Bloquer le joueur"
+    },
+    "Cancel": {
+        "en": "Cancel",
+        "fr": "Annuler"
+    },
+    "Card name":{
+        "en": "Card name",
+        "fr": "Nom de la carte"
+    },
+    "characters": {
+        "en": "characters",
+        "fr": "caractères"
+    },
+    "Cheat mode":{
+        "en": "Cheat mode",
+        "fr": "Mode triche"
+    },
+    "Classic": {
+        "en": "Classic",
+        "fr": "Classique"
+    },
+    "classique": {
+        "en": "Classic",
+        "fr": "Classique"
+    },
+    "Close": {
+        "en": "Close",
+        "fr": "Fermer"
+    },
+    "Color pallet": {
+        "en": "Color pallet",
+        "fr": "Palette de couleurs"
+    },
+    "Configuration": {
+        "en": "Configuration",
+        "fr": "Configuration"
+    },
+    "Configuration menu": {
+        "en": "Configuration menu",
+        "fr": "Menu de configuration"
+    },
+    "Confirm": {
+        "en": "Confirm",
+        "fr": "Confirmer"
+    },
+    "Confirm password": {
+        "en": "Confirm password",
+        "fr": "Confirmer le mot de passe"
+    },
+    "Connection error to database": {
+        "en": "Connection error to database",
+        "fr": "Erreur de connexion avec la base de données"
+    },
+    "Consult the history of the games": {
+        "en": "Consult the history of the games",
+        "fr": "Consulter l'historique des parties"
+    },
+    "constantsAreDifferentFromPrevious": {
+        "en": "You must confirm the new constants",
+        "fr": "Vous devez confirmer les nouvelles constantes"
+    },
+    "constantsAreInvalid": {
+        "en": "The constants are invalid",
+        "fr": "Les constantes sont invalides"
+    },
+    "Cooldown" : {
+        "en" : "Cooldown \nis active",
+        "fr" : "Cooldown \nen cours"
+    },
+    "Create": {
+        "en": "Create",
+        "fr": "Créer"
+    },
+    "Create COOP": {
+        "en": "Create COOP",
+        "fr": "Créer COOP"
+    },
+    "Create account": {
+        "en": "Create account",
+        "fr": "Créer un compte"
+    },
+    "Create new card": {
+        "en": "Create new card",
+        "fr": "Créer une nouvelle fiche"
+    },
+    "defaultValuesMessage 1/3": {
+        "en": "Reset to default values\n(initial:",
+        "fr": "Remettre les valeurs par défaut\n(initial:"
+    },
+    "defaultValuesMessage 2/3": {
+        "en": "penalty:",
+        "fr": "pénalité:"
+    },
+    "defaultValuesMessage 3/3": {
+        "en": "and saved:",
+        "fr": "et gagné:"
+    },
+    "Delete": {
+        "en": "Delete",
+        "fr": "Supprimer"
+    },
+    "Delete card": {
+        "en": "Delete card",
+        "fr": "Supprimer la fiche"
+    },
+    "Delete all game cards": {
+        "en": "Delete all game cards",
+        "fr": "Supprimer toutes les fiches de jeu"
+    },
+    "Delete game history": {
+        "en": "Delete game history",
+        "fr": "Supprimer l'historique des parties"
+    },
+    "Delete game history confirmation message": {
+        "en": "Are you sure you want to delete all game history?",
+        "fr": "Êtes-vous certain de vouloir supprimer tout l'historique des parties?"
+    },
+    "Delete history": {
+        "en": "Delete history",
+        "fr": "Supprimer l'historique"
+    },
+    "Delete leaderboards confirmation message": {
+        "en": "Are you sure you want to delete all leaderboards?",
+        "fr": "Êtes-vous certain de vouloir supprimer tous les classements?"
+    },
+    "Detach": {
+        "en": "Detach",
+        "fr": "Détacher"
+    },
+    "Difference count": {
+        "en": "Difference count",
+        "fr": "Nombre de différences"
+    },
+    "Difference image": {
+        "en": "Difference image",
+        "fr": "Image de différence"
+    },
+    "Difficulty level": {
+        "en": "Difficulty level",
+        "fr": "Niveau de difficulté"
+    },
+    "Disconnect": {
+        "en": "Log out",
+        "fr": "Se déconnecter"
+    },
+    "Duplicate drawing": {
+        "en": "Duplicate drawing",
+        "fr": "Dupliquer dessin"
+    },
+    "Duration": {
+        "en": "Duration",
+        "fr": "Durée"
+    },
+    "Edit": {
+        "en": "Edit",
+        "fr": "Modifier"
+    },
+    "Email": {
+        "en": "Email",
+        "fr": "Courriel"
+    },
+    "Email is required": {
+        "en": "Email is required",
+        "fr": "Le courriel est requis"
+    },
+    "Email must not have more than": {
+        "en": "Email must not have more than",
+        "fr": "Le courriel ne doit pas contenir plus de"
+    },
+    "Email sent": {
+        "en": "An email has been sent to you with a one-time code",
+        "fr": "Un courriel vous a été envoyé avec un code unique"
+    },
+    "Empty image": {
+        "en": "Empty image",
+        "fr": "Vider l'image"
+    },
+    "enabled": {
+        "en": "enabled",
+        "fr": "activé"
+    },
+    "disabled": {
+        "en": "disabled",
+        "fr": "désactivé"
+    },
+    "Enlargement radius": {
+        "en": "Enlargement radius",
+        "fr": "Rayon d'élargissement"
+    },
+    "Enter admin password": {
+        "en": "Enter admin password",
+        "fr": "Entrez le mot de passe administrateur"
+    },
+    "Enter code": {
+        "en": "Enter code",
+        "fr": "Entrez le code"
+    },
+    "Enter email to receive a one-time code": {
+        "en": "Enter email to receive a one-time code",
+        "fr": "Entrez votre courriel pour recevoir un code unique"
+    },
+    "Enter message...": {
+        "en": "Enter message...",
+        "fr": "Entrez votre message..."
+    },
+    "Enter new password": {
+        "en": "Enter new password",
+        "fr": "Entrez un nouveau mot de passe"
+    },
+    "Enter new pseudo": {
+        "en": "Enter new pseudo",
+        "fr": "Entrez un nouveau pseudo"
+    },
+    "Enter player pseudo": {
+        "en": "Enter player pseudo",
+        "fr": "Entrez le pseudo du joueur"
+    },
+    "Erase drawing": {
+        "en": "Erase drawing",
+        "fr": "Effacer le dessin"
+    },
+    "Eraser size": {
+        "en": "Eraser size",
+        "fr": "Taille efface"
+    },
+    "ERROR": {
+        "en": "ERROR",
+        "fr": "ERREUR"
+    },
+    "Error downloading your avatar": {
+        "en": "Error downloading your avatar",
+        "fr": "Erreur lors du téléchargement de votre avatar"
+    },
+    "Error during password change": {
+        "en": "Error during password change",
+        "fr": "Erreur lors du changement de mot de passe"
+    },
+    "Error while sending email": {
+        "en": "Error while sending email for password recovery",
+        "fr": "Erreur lors de l'envoi du courriel de récupération"
+    },
+    "Events": {
+        "en": "Events",
+        "fr": "Événements"
+    },
+    "Failed to logout": {
+        "en": "Failed to log out",
+        "fr": "La déconnexion a échouée"
+    },
+    "File not provided": {
+        "en": "File not provided",
+        "fr": "Fichier non fourni"
+    },
+    "Filter": {
+        "en": "Filter",
+        "fr": "Filtre"
+    },
+    "Forgot password": {
+        "en": "Forgot password?",
+        "fr": "Mot de passe oublié?"
+    },
+    "For testing purposes only": {
+        "en": "For testing purposes only",
+        "fr": "À des fins de test seulement"
+    },
+    "Friend request sent": {
+        "en": "Friend request sent",
+        "fr": "Demande d'ami envoyée"
+    },
+    "Friends": {
+        "en": "Friends",
+        "fr": "Amis"
+    },
+    "Friends list": {
+        "en": "Friends list",
+        "fr": "Liste d'amis"
+    },
+    "Friends of friends": {
+        "en": "Friends of friends",
+        "fr": "Amis des amis"
+    },
+    "Gain time description":{
+        "en": "Time gained per correct difference found",
+        "fr": "Temps gagné par la découverte d'une différence"
+    },
+    "Game Creation": {
+        "en": "Game Creation",
+        "fr": "Création de jeu"
+    },
+    "Game constants":{
+        "en": "Game constants",
+        "fr": "Constantes de jeu"
+    },
+    "Game mode": {
+        "en": "Game mode",
+        "fr": "Mode de jeu"
+    },
+    "Game name": {
+        "en": "Game name",
+        "fr": "Nom du jeu"
+    },
+    "Game name must be between": {
+        "en": "Game name must be between",
+        "fr": "Le nom du jeu doit être entre"
+    },
+    "Game history": {
+        "en": "Game history",
+        "fr": "Historique de partie"
+    },
+    "Game is watched": {
+        "en": "Game is being watched by ",
+        "fr": "La partie est en observation par "
+    },
+    "Games played": {
+        "en": "Games played",
+        "fr": "Nombre de parties jouées"
+    },
+    "Games won": {
+        "en": "Games won",
+        "fr": "Parties gagnées"
+    },
+    "Game visibility": {
+        "en": "Game visibility",
+        "fr": "Visibilité de partie"
+    },
+    "Give Up": {
+        "en": "Give up",
+        "fr": "Abandonner la partie"
+    },
+    "Give up game": {
+        "en": "Give up game",
+        "fr": "Abandon de partie"
+    },
+    "Global actions": {
+        "en": "Global actions",
+        "fr": "Actions globales"
+    },
+    "Global chat": {
+        "en": "Global Chat",
+        "fr": "Chat global"
+    },
+    "Go back to configuration menu": {
+        "en": "Go back to configuration menu",
+        "fr": "Retourner au menu de configuration"
+    },
+    "Hide chat": {
+        "en": "Hide chat",
+        "fr": "Cacher le clavardage"
+    },
+    "Home": {
+        "en": "Home",
+        "fr": "Accueil"
+    },
+    "Host left":{
+        "en": "The game host has left game creation.",
+        "fr": "L'hôte de la partie a quitté la création de partie."
+    },
+    "Interchange drawings": {
+        "en": "Interchange drawings",
+        "fr": "Interchanger les fiches"
+    },
+    "Internal server error": {
+        "en": "Internal server error. Please try again later",
+        "fr": "Erreur interne du serveur. Veuillez réessayer plus tard"
+    },
+    "Initial time":{
+        "en": "Initial time (s)",
+        "fr": "Temps initial (s)"
+    },
+    "Initial time description":{
+        "en": "Initial time of the countdown in Limited Time mode",
+        "fr": "Temps initial du compte à rebours en mode Temps limité"
+    },
+    "Invalid credentials": {
+        "en": "Invalid credentials",
+        "fr": "Les informations saisies ne sont pas valides"
+    },
+    "Invalid email": {
+        "en": "Email address is not valid",
+        "fr": "L'adresse courriel n'est pas valide"
+    },
+    "Invalid pseudo": {
+        "en": "Pseudo is not valid",
+        "fr": "Le pseudo n'est pas valide"
+    },
+    "Invites": {
+        "en": "Invites",
+        "fr": "Invitations"
+    },
+    "Join": {
+        "en": "Join",
+        "fr": "Rejoindre"
+    },
+    "Join COOP": {
+        "en": "Join COOP",
+        "fr": "Joindre COOP"
+    },
+    "Join solo": {
+        "en": "Join SOLO",
+        "fr": "Joindre SOLO"
+    },
+    "Leaderboard": {
+        "en": "Leaderboard",
+        "fr": "Classement"
+    },
+    "Leaderboard position update message 1/2": {
+        "en": "Congratulations! Your score deserves the position",
+        "fr": "Félicitations! Votre score vous mérite la position"
+    },
+    "Leaderboard position update message 2/2": {
+        "en": "in the leaderboard of the game",
+        "fr": "dans le tableau des meilleurs temps du jeu"
+    },
+    "Leave": {
+        "en": "Leave",
+        "fr": "Quitter"
+    },
+    "Level": {
+        "en": "Level",
+        "fr": "Niveau"
+    },
+    "Limited": {
+        "en": "Limited",
+        "fr": "Temps limité"
+    },
+    "Limited time": {
+        "en": "Limited time",
+        "fr": "Temps limité"
+    },
+    "LimitedQuit": {
+        "en": "Your partner quit!",
+        "fr": "Votre partenaire a quitté la partie!"
+    },
+    "List of players":{
+        "en": "List of players",
+        "fr": "Liste de joueurs"
+    },
+    "Loading game": {
+        "en": "Loading game...",
+        "fr": "Chargement du jeu ..."
+    },
+    "Lobby": {
+        "en": "Lobby",
+        "fr": "Salon"
+    },
+    "Log in": {
+        "en": "Log in",
+        "fr": "Se connecter"
+    },
+    "Log out": {
+        "en": "Log out",
+        "fr": "Se déconnecter"
+    },
+    "Lose message": {
+        "en": "DEFEAT! You lost",
+        "fr": "DÉFAITE! Vous avez perdu"
+    },
+    "Loser": {
+        "en": "Loser",
+        "fr": "Perdant"
+    },
+    "Mean differences found per game": {
+        "en": "Mean differences found per game",
+        "fr": "Moyenne de différences trouvées par partie"
+    },
+    "Messages": {
+        "en": "Messages",
+        "fr": "Clavardage"
+    },
+    "Modified": {
+        "en": "Modified",
+        "fr": "Modifiée"
+    },
+    "Modify avatar": {
+        "en": "Modify avatar",
+        "fr": "Modifier l'avatar"
+    },
+    "New avatar saved successfully": {
+        "en": "New avatar saved successfully",
+        "fr": "Nouvel avatar sauvegardé avec succès"
+    },
+    "New password": {
+        "en": "New password",
+        "fr": "Nouveau mot de passe"
+    },
+    "Next": {
+        "en": "Next",
+        "fr": "Suivant"
+    },
+    "No": {
+        "en": "No",
+        "fr": "Non"
+    },
+    "No cards available": {
+        "en": "No cards available to play!",
+        "fr": "Aucune carte disponible pour jouer!"
+    },
+    "No friend to show": {
+        "en": "No friend to show",
+        "fr": "Aucun ami à afficher"
+    },
+    "No game played": {
+        "en": "No game has been played",
+        "fr": "Aucune partie n'a été jouée"
+    },
+    "No invite received": {
+        "en": "No invite received",
+        "fr": "Aucune invitation reçue"
+    },
+    "No player found": {
+        "en": "No player found",
+        "fr": "Aucun joueur trouvé"
+    },
+    "No user found with this email": {
+        "en": "No user found with this email",
+        "fr": "Aucun utilisateur trouvé avec ce courriel"
+    },
+    "No video to show": {
+        "en": "No video to show",
+        "fr": "Aucune vidéo à afficher"
+    },
+    "Number of differences detected": {
+        "en": "Number of differences detected",
+        "fr": "Nombre de différences détectées"
+    },
+    "Number of differences detected must be between 3 and 9": {
+        "en": "Number of differences detected must be between 3 and 9",
+        "fr": "Le nombre de différences détectées doit être entre 3 et 9"
+    },
+    "Observation quit": {
+        "en": "Stop observing",
+        "fr": "Arrêter l'observation"
+    },
+    "Observer": {
+        "en": "Observer",
+        "fr": "Observateur"
+    },
+    "of": {
+        "en": "of",
+        "fr": "de"
+    },
+    "Original": {
+        "en": "Original",
+        "fr": "Originale"
+    },
+    "Out of clues!": {
+        "en": "Out of clues!",
+        "fr": "Indices épuisés!"
+    },
+    "Owned Video Replays": {
+        "en": "Owned Video Replays",
+        "fr": "Reprises vidéo possédées"
+    },
+    "Password": {
+        "en": "Password",
+        "fr": "Mot de passe"
+    },
+    "Password change": {
+        "en": "Change Password",
+        "fr": "Modifier le mot de passe"
+    },
+    "Password changed": {
+        "en": "Password changed successfully",
+        "fr": "Mot de passe modifié avec succès"
+    },
+    "Passwords do not match": {
+        "en": "Passwords do not match",
+        "fr": "Les mots de passe ne correspondent pas"
+    },
+    "Password must have at least": {
+        "en": "Password must have at least",
+        "fr": "Le mot de passe doit contenir au moins"
+    },
+    "Password required": {
+        "en": "Password is required",
+        "fr": "Le mot de passe est requis"
+    },
+    "Penalty time":{
+        "en": "Penalty time (s)",
+        "fr": "Temps pénalité (s)"
+    },
+    "Penalty time description":{
+        "en": "Time lost per requested hint",
+        "fr": "Temps perdu par indice demandé"
+    },
+    "Pencil size": {
+        "en": "Pencil size",
+        "fr": "Taille du crayon"
+    },
+    "Play": {
+        "en": "Play",
+        "fr": "Jouer"
+    },
+    "Player": {
+        "en": "Player",
+        "fr": "Joueur"
+    },
+    "Player blocked successfully": {
+        "en": "Player blocked successfully",
+        "fr": "Joueur bloqué avec succès"
+    },
+    "Player pseudo": {
+        "en": "Player pseudo",
+        "fr": "Pseudo du joueur"
+    },
+    "Previous": {
+        "en": "Previous",
+        "fr": "Précédent"
+    },
+    "Profile": {
+        "en": "Profile",
+        "fr": "Profil"
+    },
+    "Pseudo": {
+        "en": "Pseudo",
+        "fr": "Pseudo"
+    },
+    "Pseudo changed": {
+        "en": "Pseudo changed successfully",
+        "fr": "Pseudo modifié avec succès"
+    },
+    "Pseudo is not unique": {
+        "en": "Pseudo is not unique",
+        "fr": "Le pseudo n'est pas unique"
+    },
+    "Pseudo must not have more than": {
+        "en": "Pseudo must not have more than",
+        "fr": "Le pseudo ne doit pas contenir plus de"
+    },
+    "Pseudo required": {
+        "en": "Pseudo is required",
+        "fr": "Le pseudo est requis"
+    },
+    "Public": {
+        "en": "Public",
+        "fr": "Publique"
+    },
+    "Public Video Replays": {
+        "en": "Public Video Replays",
+        "fr": "Reprises vidéo publiques"
+    },
+    "reception" : {
+        "en" : "Choose the receiver(s)",
+        "fr" : "Choisisez le(s) réceptionniste(s)"
+    },
+    "Redo": {
+        "en": "Redo",
+        "fr": "Refaire"
+    },
+    "reflex": {
+        "en": "Reflex",
+        "fr": "Réflexe"
+    },
+    "Refuse": {
+        "en": "Refuse",
+        "fr": "Refuser"
+    },
+    "Remaining differences": {
+        "en": "Remaining differences",
+        "fr": "Différences restantes"
+    },
+    "Reset": {
+        "en": "Reset",
+        "fr": "Réinitialiser"
+    },
+    "Reattach": {
+        "en": "Reattach",
+        "fr": "Rattacher"
+    },
+    "Request a clue": {
+        "en": "Request a clue",
+        "fr": "Demander un indice"
+    },
+    "Remove friend": {
+        "en": "Remove friend",
+        "fr": "Retirer l'ami"
+    },
+    "Reset card leaderboard": {
+        "en": "Reset card leaderboard",
+        "fr": "Réinitialiser le classement de la fiche"
+    },
+    "Reset cards leaderboard": {
+        "en": "Reset cards leaderboard",
+        "fr": "Réinitialiser le classement des fiches"
+    },
+    "Reset drawing": {
+        "en": "Reset drawing",
+        "fr": "Réinitialiser dessin"
+    },
+    "Reset leaderboards": {
+        "en": "Reset leaderboards",
+        "fr": "Réinitialiser classements"
+    },
+    "Save": {
+        "en": "Save",
+        "fr": "Sauvegarder"
+    },
+    "Save video replay": {
+        "en": "Save video replay",
+        "fr": "Sauvegarder la reprise vidéo"
+    },
+    "Save new password": {
+        "en": "Save new password",
+        "fr": "Sauvegarder le nouveau mot de passe"
+    },
+    "Search": {
+        "en": "Search",
+        "fr": "Rechercher"
+    },
+    "Search a player": {
+        "en": "Search a player",
+        "fr": "Rechercher un joueur"
+    },
+    "seconds": {
+        "en": "seconds",
+        "fr": "secondes"
+    },
+    "seconds required": {
+        "en": "seconds required",
+        "fr": "secondes requise"
+    },
+    "See lobbies": {
+        "en": "See lobbies",
+        "fr": "Voir les salles"
+    },
+    "See the replay in video replay menu": {
+        "en": "See the replay in video replay menu",
+        "fr": "Voir la reprise dans le menu de reprise vidéo"
+    },
+    "Select an image": {
+        "en": "Select an image",
+        "fr": "Sélectionnez une image"
+    },
+    "Select an option": {
+        "en": "Select an option",
+        "fr": "Sélectionnez une option"
+    },
+    "Select from images selection": {
+        "en": "Select from selection of images",
+        "fr": "Sélectionner parmi une sélection d'images"
+    },
+    "Selection menu": {
+        "en": "Selection menu",
+        "fr": "Menu de sélection"
+    },
+    "Send friend request": {
+        "en": "Send friend request",
+        "fr": "Envoyer une demande d'ami"
+    },
+    "Show chat": {
+        "en": "Show chat",
+        "fr": "Montrer le clavardage"
+    },
+    "Spot the TTD": {
+        "en": "Spot the TTD",
+        "fr": "Trouve la TTD"
+    },
+    "Start":{
+        "en": "Start",
+        "fr": "Commencer"
+    },
+    "Swap cards": {
+        "en": "Swap cards",
+        "fr": "Interchanger les fiches"
+    },
+    "The card for the current waiting room has been deleted": {
+        "en": "The card for the current waiting room has been deleted",
+        "fr": "La carte de la salle d'attente actuelle a été supprimée"
+    },
+    "There are no more cards available to play with": {
+        "en": "There are no more cards available to play with",
+        "fr": "Il n'y a plus de cartes disponibles pour jouer"
+    },
+    "Time": {
+        "en": "Time",
+        "fr": "Heure"
+    },
+    "Time mean per game": {
+        "en": "Time mean per game",
+        "fr": "Temps moyen par partie"
+    },
+    "Time saved":{
+        "en": "Time saved (s)",
+        "fr": "Temps gagné (s)"
+    },
+    "Unblock player": {
+        "en": "Unblock player",
+        "fr": "Débloquer le joueur"
+    },
+    "Undo": {
+        "en": "Undo",
+        "fr": "Annuler"
+    },
+    "Unknown error": {
+        "en": "Unknown error. Please try again later",
+        "fr": "Erreur inconnue. Veuillez réessayer plus tard"
+    },
+    "UNSUPPORTED_MEDIA_TYPE error message": {
+        "en": "The file type must be png, jpg or jpeg",
+        "fr": "Le type de fichier doit être png, jpg ou jpeg"
+    },
+    "Update Pseudo": {
+        "en": "Change pseudo",
+        "fr": "Modifier pseudo"
+    },
+    "Upload a BMP image 640 x 480 pixels": {
+        "en": "Upload a BMP image 640 x 480 pixels",
+        "fr": "Téléverser une image BMP 640 x 480 pixels"
+    },
+    "Upload an image": {
+        "en": "Upload an image",
+        "fr": "Téléverser une image"
+    },
+    "User already connected": {
+        "en": "User already connected",
+        "fr": "Utilisateur déjà connecté"
+    },
+    "User not connected": {
+        "en": "User not connected",
+        "fr": "L'utilisateur n'est pas connecté"
+    },
+    "User not found": {
+        "en": "No user found with the entered credentials",
+        "fr": "Aucun utilisateur trouvé avec les informations saisies"
+    },
+    "Value between": {
+        "en": "Value between",
+        "fr": "Valeur entre"
+    },
+    "Validate file": {
+        "en": "Validate file",
+        "fr": "Valider la fiche"
+    },
+    "Verification of new game": {
+        "en": "Verification of new game",
+        "fr": "Vérification du nouveau jeu"
+    },
+    "View friends list": {
+        "en": "View friends list",
+        "fr": "Voir la liste d'amis"
+    },
+    "Video replay": {
+        "en": "Video replay",
+        "fr": "Reprise vidéo"
+    },
+    "Video replay menu": {
+        "en": "Video replay menu",
+        "fr": "Menu de reprise vidéo"
+    },
+    "Video is over": {
+        "en": "Video is over",
+        "fr": "La vidéo est terminée"
+    },
+    "View my profile": {
+        "en": "View my profile",
+        "fr": "Consulter mon profil"
+    },
+    "View history": {
+        "en": "View history",
+        "fr": "Voir l'historique"
+    },
+    "View profile": {
+        "en": "View profile",
+        "fr": "Consulter le profil"
+    },
+    "Viewing speed": {
+        "en": "Viewing speed",
+        "fr": "Vitesse de visionnement"
+    },
+    "Waiting for players":{
+        "en": "Waiting for players",
+        "fr": "Joueurs en attente"
+    },
+    "Watch the game": {
+        "en": "Watch the game",
+        "fr": "Revoir la partie"
+    },
+    "Observer message": {
+        "en": "The game has ended",
+        "fr": "La partie est finie"
+    },
+    "Win message": {
+        "en": "VICTORY! You won",
+        "fr": "VICTOIRE! Vous avez gagné"
+    },
+    "Winner": {
+        "en": "Winner",
+        "fr": "Victoire"
+    },
+    "Wrong password": {
+        "en": "Wrong password",
+        "fr": "Mot de passe incorrect"
+    },
+    "Yes": {
+        "en": "Yes",
+        "fr": "Oui"
+    }
+}

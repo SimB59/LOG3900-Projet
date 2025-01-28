@@ -1,0 +1,50 @@
+.grid-container {
+    display: flex;
+    align-content: center;
+    justify-items: space-between;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: (41,110,231);
+}
+
+.modified{
+    margin-left: 2%;
+}
+
+.original{
+    margin-left: 10%;
+}
+
+.canva-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.canva-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border: solid;
+    position: absolute;
+    left: 50%;
+    width: 100px;
+}
+
+.canvas {
+    width: 640px;
+    height: 480px;
+    object-fit: contain;
+    border: double white 5px;
+}
+
+#error {
+    font-size: 30px;
+    // top: 200px;
+    // left: 175px;
+    padding-left: 15%;
+    position: absolute;
+    font-weight: bold;
+    color: red;    
+}

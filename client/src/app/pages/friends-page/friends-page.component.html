@@ -1,0 +1,120 @@
+<div class="background" [ngClass]="themeService.isDarkTheme() ? 'split-dark-background': 'split-background'">
+    <header class="header">
+        <button mat-raised-button class="btn home" routerLink="/home" title="{{translateService.getTranslation('Home')}}" (click)="accountService.resetOtherPlayerData()"><mat-icon
+                [inline]="true">home</mat-icon></button>
+        <span id="title-profile-page">{{ translateService.getTranslation('Friends') }}</span>
+    </header>
+    <div class="content-container">
+        <div class="list-container" [ngClass]="{ 'dark-list-container-background': themeService.isDarkTheme()}">
+            <div *ngIf="accountService.isConsultingProfile(); then otherProfile; else self"></div>
+            <ng-template #otherProfile>
+                <h2>{{ translateService.getTranslation('Friends list') }} {{translateService.getTranslation('of')}} <i>{{accountService.profileConsulting.pseudo}}</i>
+                </h2>
+                <div class="list-wrapper">
+                    <div class="list">
+                        <div class="no-content" *ngIf="accountService.profileConsultingFriends.length === 0">{{translateService.getTranslation('No friend to show')}}</div>
+                        <div class="item" routerLink="/profile" (click)="accountService.fetchOtherPlayerData(player.accountId)" *ngFor="let player of accountService.profileConsultingFriends" [ngClass]="{ 'dark-item': themeService.isDarkTheme()}">
+                            <div class="user">
+                                <app-avatar #avatar class="avatar" [size]="'30px'" [allowModification]="false" [inputAvatar]="player.accountId"></app-avatar>
+                                <div>{{ player.pseudo }}</div>
+                            </div>
+                            <div class="actions">
+                                <div *ngIf="isPlayerInFriendList(player.accountId); then removeFriend; else addFriend"></div>
+                                <ng-template #removeFriend>
+                                    <button class="invisible-button" (click)="$event.stopPropagation(); accountService.removeFriend(player)">
+                                        <mat-icon title="{{translateService.getTranslation('Remove friend')}}" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">person_remove</mat-icon>
+                                    </button>
+                                </ng-template>
+                                <ng-template #addFriend>
+                                    <button class="invisible-button" [disabled]="isAccountPendingFriendRequestApproval(player.accountId) || isPlayerInBlockedList(player.accountId)" (click)="$event.stopPropagation(); accountService.sendFriendRequest(player.accountId, player.pseudo)">
+                                        <mat-icon  *ngIf="!isPlayerInBlockedList(player.accountId)" title="{{isAccountPendingFriendRequestApproval(player.accountId) ? translateService.getTranslation('Friend request sent') : translateService.getTranslation('Send friend request')}}"
+                                        [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">person_add_alt</mat-icon>
+                                    </button>
+                                </ng-template>
+                                <button class="invisible-button" (click)="$event.stopPropagation(); openBlockDialog(player)">
+                                    <mat-icon title="{{translateService.getTranslation('Block player')}}" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">block</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #self>
+                <h2>{{ translateService.getTranslation('Friends list') }}
+                    <button mat-raised-button class="loupe" (click)="openInvitesDialog()" style="position: relative; display: inline-block;">
+                        <mat-icon title="{{translateService.getTranslation('Invites')}}" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">inbox</mat-icon>
+                        <span *ngIf="accountService.receivedRequests.length > 0" class="notification"></span>
+                    </button>
+                </h2>
+                <div class="list-wrapper">
+                    <div class="list">
+                        <div class="no-content" *ngIf="accountService.friendsList.length === 0">{{translateService.getTranslation('No friend to show')}}</div>
+                        <div class="item" routerLink="/profile" (click)="accountService.fetchOtherPlayerData(player.accountId)" *ngFor="let player of accountService.friendsList" [ngClass]="{ 'dark-item': themeService.isDarkTheme()}" title="{{translateService.getTranslation('View profile')}}">
+                            <div class="user">
+                                <app-avatar #avatar class="avatar" [size]="'30px'" [allowModification]="false" [inputAvatar]="player.accountId"></app-avatar>
+                                <div>{{ player.pseudo }}</div>
+                            </div>
+                            <div class="actions">
+                                <button class="invisible-button" (click)="$event.stopPropagation(); accountService.removeFriend(player)">
+                                    <mat-icon title="{{translateService.getTranslation('Remove friend')}}" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">person_remove</mat-icon>
+                                </button>
+                                <button class="invisible-button" (click)="$event.stopPropagation(); openBlockDialog(player)">
+                                    <mat-icon title="{{translateService.getTranslation('Block player')}}" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">block</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>   
+        </div>
+        <div class="list-container" [ngClass]="{ 'dark-list-container-background': themeService.isDarkTheme()}">
+            <h2>{{ translateService.getTranslation('Search a player') }}</h2>
+            <div class="search">
+                <mat-form-field appearance="outline" title="{{translateService.getTranslation('Enter player pseudo')}}">
+                    <mat-label>{{ translateService.getTranslation('Player pseudo') }}</mat-label>
+                    <input matInput [(ngModel)]="searchedName" (keyup.enter)="accountService.searchPlayer(searchedName)">
+                </mat-form-field>
+                <button mat-raised-button class="loupe" [disabled]="searchedName.length === 0" (click)="accountService.searchPlayer(searchedName)" title="{{translateService.getTranslation('Search')}}">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+            <div class="list-wrapper">
+                <div class="list">
+                    <div class="no-content" *ngIf="accountService.searchedPlayers.length === 0">{{translateService.getTranslation('No player found')}}</div>
+                    <div class="item" routerLink="/profile" (click)="accountService.fetchOtherPlayerData(player.accountId)" *ngFor="let player of accountService.searchedPlayers" [ngClass]="{ 'dark-item': themeService.isDarkTheme()}" title="{{translateService.getTranslation('View profile')}}">
+                        <div class="user">
+                            <app-avatar #avatar class="avatar" [size]="'30px'" [allowModification]="false" [inputAvatar]="player.avatarPictureId"></app-avatar>
+                            <div>{{ player.pseudo }}</div>
+                        </div>
+                        <div class="actions">
+                            <div *ngIf="isPlayerInFriendList(player.accountId); then removeFriend; else addFriend"></div>
+                            <ng-template #removeFriend>
+                                <button class="invisible-button" (click)="$event.stopPropagation(); accountService.removeFriend(player)">
+                                    <mat-icon title="{{translateService.getTranslation('Remove friend')}}" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">person_remove</mat-icon>
+                                </button>
+                            </ng-template>
+                            <ng-template #addFriend>
+                                <button class="invisible-button" [disabled]="isAccountPendingFriendRequestApproval(player.accountId) || isPlayerInBlockedList(player.accountId)" (click)="$event.stopPropagation(); accountService.sendFriendRequest(player.accountId, player.pseudo)">
+                                    <mat-icon  *ngIf="!isPlayerInBlockedList(player.accountId)" title="{{isAccountPendingFriendRequestApproval(player.accountId) ? translateService.getTranslation('Friend request sent') : translateService.getTranslation('Send friend request')}}"
+                                    [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">person_add_alt</mat-icon>
+                                </button>
+                            </ng-template>
+
+                            <div *ngIf="isPlayerInBlockedList(player.accountId); then unblock; else block"></div>
+                            <ng-template #unblock>
+                                <button class="invisible-button" (click)="$event.stopPropagation(); accountService.unblockPlayer(player)">
+                                    <mat-icon title="{{translateService.getTranslation('Unblock player')}}" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">remove_circle_outline</mat-icon>
+                                </button>
+                            </ng-template>
+                            <ng-template #block>
+                                <button class="invisible-button" (click)="$event.stopPropagation(); openBlockDialog(player)">
+                                    <mat-icon title="{{translateService.getTranslation('Block player')}}" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">block</mat-icon>
+                                </button>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="border" [ngClass]="{'white-border' : themeService.isDarkTheme()}">
+    <div class="player-container">
+        <p *ngFor="let player of playersLobbyPseudo" class="player">{{player}}</p>
+    </div>
+    <button mat-raised-button class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" (click)="this.joinGame()" [disabled]="isFull()" >{{translationService.getTranslation('Join')}}</button>
+</div>
+

@@ -1,0 +1,4 @@
+<div class="join-container">
+    <button class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'">{{translateService.getTranslation('Lobby')}}#{{ this.numberOfJoin }} </button>
+</div>
+

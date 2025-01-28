@@ -1,0 +1,22 @@
+<div class="selection" [ngClass]="themeService.isDarkTheme() ? 'dark-background white-text' : 'selection-background'">
+    <button mat-raised-button class="btn-selection home" (click)="leave()" routerLink="/home" title="{{translationService.getTranslation('Home')}}"><mat-icon [inline]="true">home</mat-icon></button>
+    <div class="left-push">
+        <app-card *ngIf="!(this.card.id === 'Limited')" class="card" [viewMode]="viewModeLobby" [card]="card"></app-card>
+    </div>
+
+    <div class="left-push"><h2>{{translationService.getTranslation('List of players')}}</h2>
+        <p *ngFor="let player of this.lobbyService.playersLobby.get(this.card.id)?.get(this.lobbyService.getLobbyId())?.players">{{player}}</p>
+
+    </div>
+<div>
+    <button *ngIf="!isJoining()" mat-raised-button class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" [disabled]="isDisable()" (click)="startGame()">{{translationService.getTranslation('Start')}}</button>
+    <mat-error *ngIf="showErrorMessage()" class="extra-left-push">{{ this.errorMessage }}</mat-error>
+</div>
+    <app-game-constants-lobby #gameConstants class="btn-config-container" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'"></app-game-constants-lobby>
+    <div #chatboxParent class="chatbox-parent" *ngIf="accountService.aUserIsConnected()" [class.hidden]="isChatboxHidden">
+        <div class="hide-button" *ngIf="showHideButton" (click)="toggleChatboxVisibility()" [class.unhide]="isChatboxHidden" [class.hide]="!isChatboxHidden" title="{{ isChatboxHidden ? translationService.getTranslation('Show chat') : translationService.getTranslation('Hide chat')}}"></div>
+        <app-chat-box [parent]="chatboxParent" [isGlobal]="false" [deleteMessage]="this.lobbyService.gameService.deleteMessage" [ngClass]="{'unclickable': this.lobbyService.gameService.videoGameControlsAreVisible}" (isAttachedEmitter)="isChatDetach($event)"></app-chat-box>
+    </div>
+    
+</div>
+

@@ -1,0 +1,43 @@
+ <div class="selection unselectable" [ngClass]="themeService.isDarkTheme() ? 'dark-background white-text' : 'selection-background'" (mouseup)="drawingVerification()" (mousemove)="detectMouse($event)">
+    <header class="header">
+        <button mat-raised-button class="buttons home" routerLink="/config" title="{{translateService.getTranslation('Go back to configuration menu')}}"><mat-icon [inline]="true">arrow_back</mat-icon></button>
+        <span id="title-creation-page">{{translateService.getTranslation('Game Creation')}}</span>
+        <button mat-raised-button class="buttons submit" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" (click)="submit()">{{translateService.getTranslation('Validate file')}}</button>
+    </header>
+    <div class="input-holder">
+        <div class="image-upload">
+            <input #inputDoubleImage id="inputDoubleImage" type="file" accept="image/bmp" (change)="this.sendImageToChildren($event.target)"/>
+            <label mat-raised-button for="inputDoubleImage" class="upload-container" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" title="{{translateService.getTranslation('Upload an image')}}">
+                <div>Image BMP 640 x 480 pixels</div>
+                <img src="assets/save-icon.png" class="file-upload" alt="logo image"/>
+            </label>
+            <p id="textErrorMessage">{{errorMessage}}</p>
+        </div>
+        <mat-form-field appearance="fill">
+            <mat-label>{{translateService.getTranslation('Enlargement radius')}}</mat-label>
+            <select #enlargementRadius matNativeControl required>
+                <option value="0">0 pixel</option>
+                <option value="3" selected="selected">3 pixels</option>
+                <option value="9">9 pixels</option>
+                <option value="15">15 pixels</option>
+            </select>
+        </mat-form-field>
+    </div>
+    <app-tool-box class="tool-box"></app-tool-box>   
+    <div class="grid-container" >
+        <div class="margin-right">
+            <p class="canva-title unselectable">{{translateService.getTranslation('Original')}}</p>
+            <app-card-creation #originalCard [image]="this.image" [isOriginal]="true"></app-card-creation>
+            <app-card-drawing #originalDrawing [name]="this.original" ></app-card-drawing>  <!--  (outOfCanvasEvent)="this.detectMouse($event)" -->
+        </div>
+        <!-- <div class="container-exchange-button">
+            <img src="assets/exhange-icon.png" (click)="this.drawingService.exchangeDrawingToolBox()" class="exchange-button" title="{{translateService.getTranslation('Swap cards')}}" alt="flèche pour interchanger">
+        </div> -->
+        <div>
+            <p class="canva-title">{{translateService.getTranslation('Modified')}}</p>
+            <app-card-creation  #modifiedCard [image]="this.image" [isOriginal]="false"></app-card-creation>
+            <app-card-drawing #modifiedDrawing [name]="this.modified" ></app-card-drawing>   <!-- (outOfCanvasEvent)="this.detectMouse($event)" -->
+        </div>
+    </div>
+</div>
+    

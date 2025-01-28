@@ -1,0 +1,67 @@
+<div class="background" [ngClass]="themeService.isDarkTheme() ? 'split-dark-background': 'split-background'">
+    <header class="header">
+        <button mat-raised-button class="btn home" routerLink="/home" title="{{translateService.getTranslation('Home')}}"><mat-icon [inline]="true">home</mat-icon></button>
+        <span id="title-video-replay-page">{{translateService.getTranslation('Video replay menu')}}</span>
+    </header>
+
+    <div class="content-container">
+        <div class="tabs">
+            <button class="tablink" (click)="openTab('owned',$event )">{{this.translateService.getTranslation('Owned Video Replays')}}</button>
+            <button class="tablink" (click)="openTab('public', $event)">{{this.translateService.getTranslation('Public Video Replays')}}</button>
+        </div>
+
+        <div id="owned" class="tabcontent" *ngIf="isDisplayingOwnedVideoReplays">
+            <div>
+                <mat-radio-group id="ownedRadio" #ownedRadio [(ngModel)]="selectedValueOwned" [ngClass]="{ 'dark-radio': themeService.isDarkTheme()}">
+                    <mat-radio-button checked="true" value="1">{{translateService.getTranslation('Card name')}}</mat-radio-button>
+                    <mat-radio-button value="2">{{translateService.getTranslation('Player pseudo')}}</mat-radio-button>
+                </mat-radio-group>
+                <div class="search" [ngClass]="{ 'dark-search': themeService.isDarkTheme()}">
+                    <mat-form-field appearance="outline">
+                        <mat-label>{{ translateService.getTranslation('Filter') }}</mat-label>
+                        <input matInput #filterOwned (keyup.enter)="filterVideoReplays(filterOwned.value, false)">
+                    </mat-form-field>
+                    <button mat-raised-button class="loupe" (click)="filterVideoReplays(filterOwned.value, false)" title="{{translateService.getTranslation('Search')}}">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="public" class="tabcontent" *ngIf="!isDisplayingOwnedVideoReplays">
+            <div>
+                <mat-radio-group id="publicRadio" #publicRadio [(ngModel)]="selectedValuePublic" [ngClass]="{ 'dark-radio': themeService.isDarkTheme()}">
+                    <mat-radio-button checked="true" value="1">{{translateService.getTranslation('Card name')}}</mat-radio-button>
+                    <mat-radio-button value="2">{{translateService.getTranslation('Player pseudo')}}</mat-radio-button>
+                </mat-radio-group>
+                <div class="search" [ngClass]="{ 'dark-search': themeService.isDarkTheme()}">
+                    <mat-form-field appearance="outline">
+                        <mat-label>{{ translateService.getTranslation('Filter') }}</mat-label>
+                        <input matInput #filterPublic (keyup.enter)="filterVideoReplays(filterPublic.value, true)">
+                    </mat-form-field>
+                    <button mat-raised-button class="loupe" (click)="filterVideoReplays(filterPublic.value, true)" title="{{translateService.getTranslation('Search')}}">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isDisplayingOwnedVideoReplays" class="list-container" [ngClass]="{ 'dark-list-container': themeService.isDarkTheme()}">
+            <h2 [ngClass]="{ 'white-text': !themeService.isDarkTheme()}">{{translateService.getTranslation('Owned Video Replays')}}</h2>
+            <div class="list-wrapper">
+                <div class="list">
+                    <div class="no-content" [ngClass]="{ 'white-text': !themeService.isDarkTheme()}" *ngIf="videoReplayService.getOwnedVideoReplays().length === 0">{{translateService.getTranslation('No video to show')}}</div>
+                    <app-video-replay class="video-replay" *ngFor="let videoReplay of videoReplayService.getOwnedVideoReplays()" [videoReplay]="videoReplay" [isOwner]="true"></app-video-replay>
+                </div>
+            </div> 
+        </div>
+        <div *ngIf="!isDisplayingOwnedVideoReplays" class="list-container" [ngClass]="{ 'dark-list-container': themeService.isDarkTheme()}">
+            <h2 [ngClass]="{ 'white-text': !themeService.isDarkTheme()}">{{translateService.getTranslation('Public Video Replays')}}</h2>
+            <div class="list-wrapper">
+                <div class="list">
+                    <div class="no-content" [ngClass]="{ 'white-text': !themeService.isDarkTheme()}" *ngIf="videoReplayService.getPublicVideoReplays().length === 0">{{translateService.getTranslation('No video to show')}}</div>
+                    <app-video-replay class="video-replay" *ngFor="let videoReplay of this.videoReplayService.getPublicVideoReplays()" [videoReplay]="videoReplay" [isOwner]="false"></app-video-replay>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

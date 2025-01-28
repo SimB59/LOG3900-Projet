@@ -1,0 +1,12 @@
+<div class="container">
+    <div mat-dialog-title>{{translateService.getTranslation('Game visibility')}}</div>
+    
+    <div mat-dialog-container class="content">
+        <button mat-raised-button (click)="setLobbyType('public')">{{translateService.getTranslation('Public')}}</button>
+        <button mat-raised-button (click)="setLobbyType('friends')">{{translateService.getTranslation('Friends')}}</button>
+        <button mat-raised-button (click)="setLobbyType('friends of friends')">{{translateService.getTranslation('Friends of friends')}}</button>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>{{ translateService.getTranslation('Cancel') }}</button>
+    </div>
+</div>

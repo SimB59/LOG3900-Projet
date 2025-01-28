@@ -1,0 +1,5 @@
+<div class="lobby-container">
+    <p *ngIf="!getRange().length" mat-dialog-title>{{this.translateService.getTranslation('Waiting for players')}}</p>
+    <app-player-join *ngFor="let i of getRange()" (click)="this.openPlayersLobbyWidget(i)" [numberOfJoin]="i"></app-player-join>
+</div>
+

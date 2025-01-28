@@ -1,0 +1,19 @@
+<div class="container">
+    <div *ngIf="this.lobbyService.playersLobby.get(this.data.card.id)!.get(this.data.lobbyNumber); then available; else close"></div>
+    <ng-template #available>
+        <div mat-dialog-title>{{translateService.getTranslation('List of players')}}</div>
+        <div mat-dialog-content class="content">
+            <div *ngFor="let player of this.lobbyService.playersLobby.get(this.data.card.id)!.get(this.data.lobbyNumber)?.players">{{player}}</div>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close>{{ translateService.getTranslation('Cancel') }}</button>
+            <button mat-raised-button (click)="this.joinGame()" [disabled]="isFull()">{{translateService.getTranslation('Join')}}</button>
+        </div>
+    </ng-template>
+    <ng-template #close>
+        <div mat-dialog-title>{{translateService.getTranslation('Host left')}}</div>
+        <div mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close>{{ translateService.getTranslation('Close') }}</button>
+        </div>
+    </ng-template>
+</div>

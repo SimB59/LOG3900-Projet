@@ -1,0 +1,97 @@
+.selection {
+    background-position: center;
+    min-height: 100vh;
+    height: auto;
+}
+
+.config-background {
+    height: 100%
+}
+
+.selection-background {
+    background: linear-gradient(315deg, #e1e1ff, 50%, rgb(39, 119, 255));
+}
+
+
+.column {
+    flex: 1;
+}
+
+.row-container {
+    display: grid;
+}
+
+.header {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+}
+
+#title-config-page {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.btn-selection {
+    border-radius: 25px;
+    border: 2px solid black;
+    width: 80%;
+    height: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.628);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.footer-buttons-container .btn-selection, .header .home {
+    border-radius: 5px;
+    border-color: grey;
+    width: fit-content;
+    height: 50px;
+    font-size: 50px;
+    color: aqua;
+    background-color: black;
+}
+
+.home {
+    place-self: start;
+}
+
+.btn-selection:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.footer {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 2fr 11fr;
+}
+
+.footer-buttons-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.prev {
+    place-self: end;
+    float: right;
+    cursor:pointer;
+}
+
+.next {
+    place-self: start;
+    float: left;
+    cursor:pointer;
+}
+
+#previous {
+    visibility: hidden;
+}
+
+#next {
+    visibility: hidden;
+}

@@ -1,0 +1,45 @@
+<div class="general" [ngClass]="themeService.isDarkTheme() ? 'in-game-dark-background':'in-game-light-background'">
+    <header  class="header" [ngClass]="this.gameService.videoGameControlsAreVisible ? 'header': 'header-hidden' ">
+        <button mat-raised-button class="btn-selection home" [disabled]="!this.gameService.videoGameControlsAreVisible" (click)="this.stop()" title="{{translateService.getTranslation('Home')}}"><mat-icon [inline]="true">home</mat-icon></button>
+    </header>
+    <div class="main-container">
+        <div class="header-area-container" [ngClass]="{'unclickable': this.gameService.videoGameControlsAreVisible}">
+            <!-- <app-difference-count class="self" [playerName] = "accountService.pseudo" [differenceFoundNumber]="gameService.selfDiffCount"></app-difference-count> -->
+            <app-difference-count [isLimited]="false" *ngIf="!this.isObserverMode()" [rank]="this.findAccountRankName(this.accountService.accountData.accountRank)!" [playerName] = "accountService.pseudo" [differenceFoundNumber]="gameService.selfDiffCount"></app-difference-count>
+            <app-difference-count [isLimited]="false" *ngIf="this.isObserverMode()" [rank]="this.findAccountRankName(this.playerService.opponentPlayers[0].rank)!" [playerName]="this.playerService.opponentPlayers[0].pseudo" [differenceFoundNumber]="this.playerService.opponentPlayers[0].differenceCount"></app-difference-count>
+            <!-- gameService.isClassicMode || !gameService.isMultiplayer ? gameService.selfName : gameService.selfName + ' ' + gameService.opponentName to remove if not needed -- Sidney -->
+            <div class="game-details-container">
+                <app-observer-interaction [isOn]="this.isObserverMode()"></app-observer-interaction>
+                <app-timer></app-timer>
+            </div>    
+            <div *ngIf="!this.isObserverMode()" class="extend">
+                <app-difference-count [isLimited]="!this.gameService.isClassicMode" *ngFor="let player of this.playerService.opponentPlayers" class="opponent" [rank]="this.findAccountRankName(player.rank)!" [playerName] = "player.pseudo" [differenceFoundNumber]="player.differenceCount"></app-difference-count>
+            </div>  
+            <div *ngIf="this.isObserverMode()" class="extend">
+                <ng-container *ngFor="let player of playerService.opponentPlayers; let i = index">
+                    <ng-container *ngIf="i !== 0">
+                        <app-difference-count [isLimited]="!this.gameService.isClassicMode" class="opponent" [rank]="this.findAccountRankName(player.rank)!" [playerName] = "player.pseudo" [differenceFoundNumber]="player.differenceCount"></app-difference-count>
+                    </ng-container>
+                </ng-container>
+            </div> 
+        </div>
+        <div class="play-area-container">
+            <app-play-area [ngClass]="{'unclickable': this.gameService.videoGameControlsAreVisible}" [cardId]="this.gameService.gameData.id" tabindex="0"></app-play-area>
+            <div *ngIf="this.gameService.videoGameControlsAreVisible; then videoControls"></div>
+                <ng-template #videoControls>
+                    <app-video-replay-control *ngIf="!this.gameService.getEndPopUpVisibility()" class="replay"></app-video-replay-control>
+                </ng-template>
+                <ng-template #clues>
+                    <!-- <app-clue-indicator *ngIf="!this.gameService.isMultiplayer && !this.gameService.getEndPopUpVisibility()" class="clues"></app-clue-indicator>  not needed anymore Sidney 2024--> 
+                </ng-template>
+        </div>
+        <div class="footer-area-container">
+            <button mat-raised-button [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" *ngIf="!this.gameService.videoGameControlsAreVisible && !this.gameService.getEndPopUpVisibility()" class="btn" (click)="this.openAbandonConfirmation()">{{this.isObserverMode() ? this.translateService.getTranslation("Observation quit") : this.translateService.getTranslation("Abandon game") }}</button>
+            <span class="title" *ngIf="!this.isObserverMode() && this.gameService.gameIsWatched">{{this.translateService.getTranslation("Game is watched") + + this.gameService.observerCount}}</span>
+        </div>
+    </div>
+    <div #chatboxParent class="chatbox-parent" *ngIf="accountService.aUserIsConnected" [class.hidden]="isChatboxHidden">
+        <div class="hide-button" *ngIf="showHideButton" (click)="toggleChatboxVisibility()" [class.unhide]="isChatboxHidden" [class.hide]="!isChatboxHidden" title="{{ isChatboxHidden ? translateService.getTranslation('Show chat') : translateService.getTranslation('Hide chat')}}"></div>
+        <app-chat-box [parent]="chatboxParent" [isGlobal]="false" [deleteMessage]="this.gameService.deleteMessage" [ngClass]="{'unclickable': this.gameService.videoGameControlsAreVisible}" (isAttachedEmitter)="isChatDetach($event)"></app-chat-box>
+    </div>
+</div>

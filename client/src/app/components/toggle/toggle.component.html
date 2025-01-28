@@ -1,0 +1,19 @@
+<label class="switch">
+    <input type="checkbox" [(ngModel)]="isChecked" (click)="this.onClick()">
+    <div class="slider" [ngClass]="{ 'dark-slider': themeService.isDarkTheme()}"></div>
+    <div class="slider-label">
+    <div *ngIf="this.isLanguageToggle; then language; else theme"></div>
+        <ng-template #language>
+            <div [ngClass]="{ 'not-selected': isChecked }">FR</div>
+            <div [ngClass]="{ 'not-selected': !isChecked }">EN</div>
+        </ng-template>
+        <ng-template #theme>
+            <div [ngClass]="{ 'not-selected': isChecked }" class="icon-wrapper">
+                <mat-icon class="icon">brightness_5</mat-icon>
+            </div>
+            <div [ngClass]="{ 'not-selected': !isChecked }" class="icon-wrapper">
+                <mat-icon class="icon">brightness_3</mat-icon>
+            </div>
+        </ng-template>
+    </div>
+</label>

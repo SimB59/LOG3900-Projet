@@ -1,0 +1,26 @@
+<div class="logout-and-toggles" *ngIf="aUserIsConnected()">
+    <button mat-raised-button class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" (click)="disconnect()">{{ translateService.getTranslation('Disconnect') }}</button>
+    <div class="toggle-container">
+        <app-toggle [preference]="themeService.currentTheme"></app-toggle>
+        <app-toggle [preference]="translateService.currentLanguage"></app-toggle>
+    </div>
+</div>
+<div class="container justified basic-background"  [ngClass]="{ 'dark-background': themeService.isDarkTheme()}">
+    <img id="logo" [src]="themeService.isDarkTheme() ? 'assets/images/darklogo.svg' : 'assets/images/lightlogo.svg'" alt="Logo Projet"/>
+    
+    <div class="btn-main-container" *ngIf="aUserIsConnected()">
+        <button mat-raised-button id="btn-classique" class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" routerLink="/options/classic">{{translateService.getTranslation('Classic')}}</button>
+        <button mat-raised-button id="btn-temps-limite" class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" routerLink="/options/limited">{{translateService.getTranslation('Limited time')}}</button>
+        <button mat-raised-button id="btn-observateur" class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" routerLink="/observer">{{translateService.getTranslation('Observer')}}</button>
+        <button mat-raised-button id="btn-configuration" class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" (click)="promptPasswordLock()">{{translateService.getTranslation('Configuration')}}</button>
+        <button mat-raised-button id="btn-video-replay" class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" routerLink="/videos" >{{translateService.getTranslation('Video replay')}}</button>
+        <button mat-raised-button class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" routerLink="/profile">{{translateService.getTranslation('Profile')}}</button>
+    </div>
+
+    <footer class="footer-item">
+        <p>
+            <span>Simon Bachand</span>, <span>Mounir Lammali</span>, <span>Sidney Gharib</span>, 
+            <span>Antoine Soldati</span>, <span>Jérome Chabot</span>, <span>Olivier Falardeau</span>
+        </p>
+    </footer>
+</div>

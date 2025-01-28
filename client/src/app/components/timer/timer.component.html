@@ -1,0 +1,6 @@
+<div class="main-container">
+    <div class="timer-container">
+        <p id="timer-text">{{this.timeService.formatTime()}}</p>
+    </div>
+    <span #error id="error" *ngIf="this.gameService.errorVisibility">{{translationService.getTranslation('ERROR')}}</span>
+</div>

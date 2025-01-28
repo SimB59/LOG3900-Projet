@@ -1,0 +1,12 @@
+<div class="width-20">
+    <div mat-dialog-title class="title" *ngIf="this.gameService.gameLimitedIsQuit">{{translateService.getTranslation('LimitedQuit')}}</div>
+    <div *ngIf="!this.gameService.gameLimitedIsQuit && !this.videoReplayService.isPlayingSavedVideo && !this.data.isObserverMode" mat-dialog-title class="title">{{this.gameService.gameIsWon ? translateService.getTranslation('Win message') : translateService.getTranslation('Lose message')}}</div>
+    <div *ngIf="this.videoReplayService.isPlayingSavedVideo" mat-dialog-title class="title">{{translateService.getTranslation('Video is over')}}</div>
+    <div *ngIf="this.data.isObserverMode" mat-dialog-title class="title">{{translateService.getTranslation('Observer message')}}</div>
+    <mat-dialog-actions class="button-container">
+        <button mat-raised-button mat-dialog-close (click)="this.gameService.abandonGame()">{{translateService.getTranslation('Leave')}}</button>
+        <button mat-raised-button mat-dialog-close *ngIf="this.gameService.isClassicMode" (click)="this.replay()">{{translateService.getTranslation('Watch the game')}}</button>
+        <button mat-raised-button [disabled]="this.videoReplayService.isSavedVideo" *ngIf="this.gameService.isClassicMode && !this.videoReplayService.isPlayingSavedVideo" (click)="saveReplay()">{{translateService.getTranslation('Save video replay')}}</button>
+        <p *ngIf="this.videoReplayService.isSavedVideo">{{translateService.getTranslation('See the replay in video replay menu')}}</p>
+    </mat-dialog-actions>
+</div>

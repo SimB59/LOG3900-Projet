@@ -1,0 +1,32 @@
+<div class="selection" [ngClass]="themeService.isDarkTheme() ? 'dark-background white-text' : 'selection-background'">
+    <header class="header">
+        <button mat-raised-button class="btn-selection home" routerLink="/home" title="{{translationService.getTranslation('Home')}}"><mat-icon [inline]="true">home</mat-icon></button>
+        <div class="columm">
+            <span id="title-config-page">{{translationService.getTranslation('Selection menu')}}</span>
+            <button mat-raised-button class="btn-selection marge" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" *ngIf="this.cardChangeService.areCardsToPlay && this.cardChangeService.isLimitedEnable && !this.gameService.lobbyWaitingVisibility" (click)="openCreateLobbyDialog()">{{translationService.getTranslation('Create COOP')}}</button>
+        </div>
+    </header>
+
+    <div>
+        <div class="column">
+            <!-- <app-limited-time-lobby></app-limited-time-lobby> -->
+            <app-limited-time-lobby *ngFor="let lobby of getPlayersLobby() | keyvalue" [playersLobbyPseudo]="lobby.value.players" [lobbyId]="lobby.key"></app-limited-time-lobby>
+                <div *ngIf="!this.cardChangeService.areCardsToPlay" class="no-content-container">
+                    <div class="no-content"><mat-icon [inline]="true" class="error-icon">error</mat-icon>{{translationService.getTranslation('No cards available')}}</div>
+                </div>
+            <!-- <app-selection-area #selectionArea [viewMode]="viewMode" [cardDataArray]="cardChangeService.getPageData()"> </app-selection-area> -->
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div></div>
+        <!-- <div class="footer-buttons-container">
+            <div>
+                <button *ngIf="this.cardChangeService.previousPageButtonVisibility" class="btn-selection prev" (click)="this.cardChangeService.changePage(false);" title="Précédent"><mat-icon [inline]="true">arrow_back</mat-icon></button>
+            </div>
+            <div>
+                <button *ngIf="this.cardChangeService.nextPageButtonVisibility" class="btn-selection next" (click)="this.cardChangeService.changePage(true);" title="Suivant"><mat-icon [inline]="true">arrow_forward</mat-icon></button>
+            </div>
+        </div> -->
+    </footer>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+    <div mat-dialog-title>{{translateService.getTranslation('Invites')}}</div>
+    <mat-dialog-content>
+        <div class="list">
+            <div *ngIf="accountService.receivedRequests.length === 0">{{translateService.getTranslation('No invite received')}}</div>
+            <div class="item" *ngFor="let player of accountService.receivedRequests" [ngClass]="{ 'dark-item': themeService.isDarkTheme()}">
+                <div class="user">
+                    <app-avatar #avatar class="avatar" [size]="'30px'" [allowModification]="false" [inputAvatar]="player.accountId"></app-avatar>
+                    <div>{{ player.pseudo }}</div>
+                </div>
+                <div class="actions">
+                    <button class="invisible-button" (click)="accountService.acceptFriendRequest(player)">
+                        <mat-icon title="{{translateService.getTranslation('Accept')}}" class="accept" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">check_circle</mat-icon>
+                    </button>
+                    <button class="invisible-button" (click)="accountService.refuseFriendRequest(player)">
+                        <mat-icon title="{{translateService.getTranslation('Refuse')}}" class="cancel" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">cancel</mat-icon>
+                    </button>
+                    <button class="invisible-button" (click)="openBlockDialog(player)">
+                        <mat-icon title="{{translateService.getTranslation('Block player')}}" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">block</mat-icon>
+                    </button>
+                    <button class="invisible-button">
+                        <mat-icon title="{{translateService.getTranslation('View profile')}}" [ngClass]="themeService.isDarkTheme() ? 'dark-icon' : 'light-icon'">account_circle</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button class="button" mat-raised-button mat-dialog-close>{{translateService.getTranslation('Close')}}</button>
+    </mat-dialog-actions>
+</div>

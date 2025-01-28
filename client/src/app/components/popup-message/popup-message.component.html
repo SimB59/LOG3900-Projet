@@ -1,0 +1,18 @@
+<div class="container">
+    <div *ngIf="this.data.isTypeError then errorMessage; else successMessage"></div>
+    <ng-template #errorMessage>
+        <div mat-dialog-title class="error-icon"><mat-icon [inline]="true">error</mat-icon></div>
+        <mat-dialog-content class="content">
+            <b>{{ translateService.getTranslation(this.data.message) }}</b>
+        </mat-dialog-content>
+    </ng-template>
+    <ng-template #successMessage>
+        <div mat-dialog-title class="success-icon"><mat-icon [inline]="true">check_circle</mat-icon></div>
+        <mat-dialog-content class="content">
+            <b>{{ translateService.getTranslation(this.data.message) }}</b>
+        </mat-dialog-content>
+    </ng-template>
+    <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>Ok</button>
+    </mat-dialog-actions>
+</div>

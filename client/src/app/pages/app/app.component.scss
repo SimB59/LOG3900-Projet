@@ -1,0 +1,29 @@
+.chatbox-parent {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    transition: right 0.3s ease-in-out;
+}
+
+.chatbox-parent.hidden {
+    right: -302px;
+}
+
+.hide-button {
+    cursor: pointer;
+    position: fixed;
+    right: 0;
+    bottom: 25%;
+    width: 20px;
+    height: 20px;
+    background: #7858ff;
+}
+
+.hide-button.hide {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+}
+
+.hide-button.unhide {
+    clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
+}

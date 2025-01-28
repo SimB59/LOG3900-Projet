@@ -1,0 +1,47 @@
+<div *ngIf="confirmationPrompt; then prompt; else history"></div>
+<ng-template #prompt>
+    <div mat-dialog-title class="title">{{translateService.getTranslation('Delete game history')}}</div>
+    <mat-dialog-content>{{translateService.getTranslation('Delete game history confirmation message')}}</mat-dialog-content>
+    <mat-dialog-actions class="button-container">
+        <button mat-raised-button (click)="back()">{{translateService.getTranslation('Back')}}</button>
+        <button *ngIf="!emptyHistory;" mat-raised-button (click)="clearMatchHistory()">{{translateService.getTranslation('Confirm')}}</button>
+    </mat-dialog-actions>
+</ng-template>
+<ng-template #history>
+    <div class="width-20">
+        <div mat-dialog-title class="title">{{translateService.getTranslation('Game history')}}</div>
+        <div *ngIf="emptyHistory; then empty; else notEmpty"></div>
+        <ng-template #empty>
+            <mat-dialog-content>{{translateService.getTranslation('No game played')}}</mat-dialog-content>
+        </ng-template>
+        <ng-template #notEmpty>
+            <mat-dialog-content>
+                <div *ngFor="let gameHistory of historyService.history">
+                    <div class="history">
+                        <p>Date: {{gameHistory.dateStarted}}</p> 
+                        <p>{{translateService.getTranslation('Time')}}: {{gameHistory.timeStarted}}</p> 
+                        <p>{{translateService.getTranslation('Duration')}}: {{gameHistory.timeLength}} s</p>
+                        <p>{{translateService.getTranslation('Game mode')}}: {{gameHistory.gameType}}</p>
+                        <p> {{translateService.getTranslation('Player')}} 1:
+                            <span [ngClass]="{'winner': establishWinner(gameHistory, true, gameHistory.gameType === 'Temps limité'), 'surrendered': establishSurrender(gameHistory, true)}"> 
+                                {{gameHistory.firstPlayer}}
+                            </span>
+                        </p>
+                        <p *ngIf="gameHistory.secondPlayer !== ' '">
+                            {{translateService.getTranslation('Player')}} 2: 
+                            <span [ngClass]="{'winner': establishWinner(gameHistory, false, gameHistory.gameType === 'Temps limité'), 'surrendered': establishSurrender(gameHistory, false)}">
+                            {{gameHistory.secondPlayer}}
+                            </span>
+                        </p>   
+                    </div>
+                </div>
+            </mat-dialog-content>
+        </ng-template>
+        <mat-dialog-actions class="button-container">
+            <button mat-raised-button mat-dialog-close>{{translateService.getTranslation('Close')}}</button>
+            <button *ngIf="!emptyHistory;" mat-raised-button class="btn-config" (click)="promptConfirmation()">{{translateService.getTranslation('Delete history')}}</button>
+        </mat-dialog-actions>
+    </div>
+</ng-template>
+    
+

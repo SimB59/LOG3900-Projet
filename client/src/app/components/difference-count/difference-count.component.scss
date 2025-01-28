@@ -1,0 +1,42 @@
+#player-name {
+    font-size: 20px;
+    border: solid white;
+    border-radius: 10px;
+    width: auto;
+    min-width: 150px;
+    max-width: 150px;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#difference-count {
+    font-size: 15px;
+    border: solid;
+    border-color: white;
+    color: white;
+    border-width: 6px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin: auto;
+}
+
+.light-mode {
+    background-color: rgb(0 255 255 / 50%);
+}
+
+.dark-mode {
+    background-color: rgb(22 24 24 / 50%);
+    color: white;
+}
+
+#player-name.dark-mode {
+    font-weight: normal;
+}

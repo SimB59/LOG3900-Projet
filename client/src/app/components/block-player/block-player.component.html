@@ -1,0 +1,10 @@
+<div class="container">
+    <div mat-dialog-title>{{translateService.getTranslation('Block a player')}}</div>
+    <mat-dialog-content>
+        {{translateService.getTranslation('Block a player confirmation message')}} <i>{{data.player.pseudo}}</i> ?
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button class="button" mat-raised-button mat-dialog-close>{{translateService.getTranslation('No')}}</button>
+        <button class="button" mat-raised-button mat-dialog-close (click)="blockPlayer()">{{translateService.getTranslation('Yes')}}</button>
+    </mat-dialog-actions>
+</div>

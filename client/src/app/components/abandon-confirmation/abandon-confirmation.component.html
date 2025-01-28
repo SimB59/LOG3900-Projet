@@ -1,0 +1,6 @@
+<div mat-dialog-title class="title">{{translationService.getTranslation('Give up game')}}</div>
+<mat-dialog-content>{{translationService.getTranslation('Abandon game message')}}</mat-dialog-content>
+<mat-dialog-actions class="button-container">
+    <button mat-raised-button mat-dialog-close>{{translationService.getTranslation('Back')}}</button>
+    <button mat-raised-button mat-dialog-close (click)="this.gameService.abandonGame(true)">{{translationService.getTranslation('Confirm')}}</button>
+</mat-dialog-actions>

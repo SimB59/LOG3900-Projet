@@ -1,0 +1,174 @@
+.general {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.special-background {
+    background: linear-gradient(white, Black, Gray, LightGray, Brown, Pink, Red, Orange, Yellow, LimeGreen, Green, LightBlue, Cyan, Blue, Magenta, Purple) !important;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+}
+
+
+.header-area-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1% 2%;
+    justify-items: center;
+    height: 25%;
+}
+
+.game-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.self {
+    justify-self: flex-start;
+}
+
+.opponent {
+    padding-right: 1%;
+    justify-self: flex-end;
+}
+
+.footer-area-container {
+    display: flex;
+    gap: 400px;
+    flex-direction: row;
+    padding: 1% 2%;
+    min-height: 60px;
+}
+
+.play-area-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.clues {
+    display: flex;
+    justify-content: center;
+}
+
+.replay {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.btn {
+    border-radius: 25px;
+    border: 2px solid #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    // background-color: rgba(255, 255, 255, 0.628);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.unclickable {
+    pointer-events: none;
+}
+
+.chatbox-parent {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    transition: right 0.3s ease-in-out;
+}
+
+.chatbox-parent.hidden {
+    right: -302px;
+}
+
+.hide-button {
+    cursor: pointer;
+    position: fixed;
+    right: 0;
+    top: 25%;
+    width: 20px;
+    height: 20px;
+    background: #7858ff;
+}
+
+.hide-button.hide {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+}
+
+.hide-button.unhide {
+    clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
+}
+
+.extend {
+    display: flex;
+    margin-left:5% ;
+    max-width: 500px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 5px;
+    color: black;
+}
+
+.header {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+}
+
+
+.header-hidden {
+    opacity: 0;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+}
+
+.btn-selection {
+    border-radius: 25px;
+    border: 2px solid black;
+    width: 80%;
+    height: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.628);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.home {
+    place-self: start;
+}
+
+btn-selection:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.footer-buttons-container .btn-selection, .header .home {
+    border-radius: 5px;
+    border-color: grey;
+    width: fit-content;
+    height: 50px;
+    font-size: 50px;
+    color: aqua;
+    background-color: black;
+  }

@@ -1,0 +1,26 @@
+<div class="container">
+    <div mat-dialog-title>{{translateService.getTranslation('Verification of new game')}} <i>{{ gameName }}</i></div>
+    <div mat-dialog-content class="content">
+        <div *ngIf="isEnoughDifferences() then ok; else notOk"></div>
+        <ng-template #ok>
+            <h3>{{translateService.getTranslation('Number of differences detected')}} : {{ numberOfDifferences }}</h3>
+        </ng-template>
+        <ng-template #notOk>
+            <div class="error-container">
+                <h3 class="difference-count">{{translateService.getTranslation('Number of differences detected')}} : {{ numberOfDifferences }}</h3>
+                <mat-hint class="mat-error">{{translateService.getTranslation('Number of differences detected must be between 3 and 9')}}</mat-hint>
+            </div>
+        </ng-template>
+        <h3>{{translateService.getTranslation('Difficulty level')}} : {{difficulty}}</h3>
+        <mat-form-field appearance="outline">
+            <mat-label>{{translateService.getTranslation('Game name')}}</mat-label>
+            <input matInput [(ngModel)]="gameName" required (keyup.enter)="save()" placeholder="{{translateService.getTranslation('Spot the TTD')}}">
+            <mat-hint class="mat-error" *ngIf="!isTitleValid()">{{translateService.getTranslation('Game name must be between')}} {{ minLengthName }} {{translateService.getTranslation('and')}} {{ maxLengthName }} {{translateService.getTranslation('characters')}}</mat-hint>
+        </mat-form-field>
+        <img id="differencesImage" [src]="differencesImageBase64" alt="{{translateService.getTranslation('Difference image')}}" />
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>{{translateService.getTranslation('Cancel')}}</button>
+        <button mat-raised-button mat-dialog-close (click)="save()" [disabled]="!this.isEnoughDifferences() || !this.isTitleValid()">{{translateService.getTranslation('Save')}}</button>
+    </div>
+</div>

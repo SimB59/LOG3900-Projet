@@ -1,0 +1,31 @@
+<div #chatbox class="chatbox-container">
+  <div class="chat-container">
+    <div class="chat-header">
+      <div>{{ this.isGlobal ? translateService.getTranslation('Global chat') : translateService.getTranslation('Messages') }}</div>
+      <button mat-raised-button *ngIf="this.isAttached" (click)="toggleChatboxAttachment()" title="{{ translateService.getTranslation('Detach') }}"><mat-icon>open_in_new</mat-icon></button>
+      <button mat-raised-button *ngIf="!this.isAttached" (click)="toggleChatboxAttachment()" title="{{ translateService.getTranslation('Reattach') }}"><mat-icon>open_in_browser</mat-icon></button>
+    </div>
+    <div class="chat-box-body">
+      <div #chatLogs class="chat-logs">
+        <div *ngIf="this.isGlobal; then globalBlock; else notGlobalBlock"></div>
+        <ng-template #globalBlock>
+          <div *ngFor="let chat of this.messageService.getGlobalMessages()" class="chat-bubble" [ngClass]="this.messageService.stringValueOfChatEntryType(chat.type)" >
+            <div class="chat">{{chat.timestamp + ' - ' + chat.playerName + ' - ' + chat.message}}</div>
+          </div>
+        </ng-template>
+        <ng-template #notGlobalBlock>
+          <div *ngFor="let chat of this.messageService.getMessages()" class="chat-bubble" [ngClass]="this.messageService.stringValueOfChatEntryType(chat.type)" >
+            <div class="chat">{{chat.timestamp + ' - ' + chat.playerName + ' - ' + chat.message}}</div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="chat-footer">
+      <input #messageInput [(ngModel)]="message" class="message-input" type="text" (keyup.enter)="send()" placeholder="{{translateService.getTranslation('Enter message...')}}" (ngModelChange)="adjustCounterAndSendBtn()" (focus)="inputSelected()" (blur)="inputUnselected()">
+      <div class="sending">
+        <button #sendBtn class="send-btn disabled" (click)="this.send()"><mat-icon>send</mat-icon></button>
+        <div #counter class="counter">{{ message.length }}/{{ chatLimit }}</div>
+      </div>
+    </div>
+  </div>
+</div>

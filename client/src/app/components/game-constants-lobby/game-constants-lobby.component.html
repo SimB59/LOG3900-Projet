@@ -1,0 +1,30 @@
+<div class="game-constants-container" [ngClass]="{'white-text': themeService.isDarkTheme()}">
+    <div class="title">{{this.translationService.getTranslation('Game constants')}}</div>
+
+    <p *ngIf="this.isJoining()" class="text">{{ this.translationService.getTranslation('Initial time') + ' : ' + this.inputValidationService.constants.initial}}</p>
+    <mat-form-field *ngIf="!this.isJoining()" class="inputs" appearance="outline" title="{{translationService.getTranslation('Initial time description')}}">
+        <mat-label class="bold">{{this.translationService.getTranslation('Initial time')}}</mat-label>
+        <input  #initial required class="text" matInput type="number" [(ngModel)]="inputValidationService.constants.initial" min="{{initialMinValue}}" max="{{initialMaxValue}}" (keypress)="inputValidationService.validateKeyPress($event)" (ngModelChange)="this.inputValidationService.verifyInitial(initialRef)">
+        <mat-error>{{ initialErrorMessage }}</mat-error>
+    </mat-form-field>
+
+    <p *ngIf="this.isJoining() && isLimitedTime()" class="text">{{ this.translationService.getTranslation('Penalty time') + ' : ' + this.inputValidationService.constants.penalty}}</p>
+    <mat-form-field *ngIf="!this.isJoining() && isLimitedTime()" class="inputs" appearance="outline" title="{{translationService.getTranslation('Penalty time description')}}">
+        <mat-label class="bold">{{this.translationService.getTranslation('Penalty time')}}</mat-label>
+        <input #penalty required class="text" matInput type="number" [(ngModel)]="inputValidationService.constants.penalty" min="{{penaltyMinValue}}" max="{{penaltyMaxValue}}" (keypress)="inputValidationService.validateKeyPress($event)" (ngModelChange)="this.inputValidationService.verifyPenalty(penaltyRef)">
+        <mat-error>{{ penaltyErrorMessage }}</mat-error>
+    </mat-form-field>
+
+    <p *ngIf="this.isJoining() && isLimitedTime()" class="text">{{ this.translationService.getTranslation('Time saved') + ' : ' + this.inputValidationService.constants.gain}}</p>
+    <mat-form-field *ngIf="!this.isJoining() && isLimitedTime()" class="inputs" appearance="outline" title="{{translationService.getTranslation('Gain time description')}}">
+        <mat-label class="bold">{{this.translationService.getTranslation('Time saved')}}</mat-label>
+        <input #gain required class="text" matInput type="number" [(ngModel)]="inputValidationService.constants.gain" min="{{gainMinValue}}" max="{{gainMaxValue}}" (keypress)="inputValidationService.validateKeyPress($event)" (ngModelChange)="this.inputValidationService.verifyGain(gainRef)">
+        <mat-error>{{ gainErrorMessage }}</mat-error>
+    </mat-form-field>
+        <mat-checkbox *ngIf="!this.isJoining()" class="example-margin bold"[(ngModel)]="inputValidationService.constants.isCheatMode">{{translationService.getTranslation('Cheat mode')}}</mat-checkbox>
+        <p *ngIf="isJoining()" class="text">{{translationService.getTranslation('Cheat mode') + ' : ' + translationService.getTranslation(inputValidationService.getCheatModeMessage())}}</p>
+    <div *ngIf="!isJoining()" class="btn-container">
+        <button mat-raised-button class="btn-config actions" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" title="{{ defaultValuesMessage }}" (click)="this.lobbyService.resetValues()"><mat-icon>restore</mat-icon></button>
+        <button mat-raised-button class="btn-config accept actions"[ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" title="{{translationService.getTranslation('Apply modifications')}}" [disabled]="inputValidationService.constantsAreInvalid() || !inputValidationService.constantsAreDifferentFromPrevious()" (click)="this.lobbyService.updateLobbyConstants()"><mat-icon>check_circle_outline</mat-icon></button>
+    </div>
+</div>

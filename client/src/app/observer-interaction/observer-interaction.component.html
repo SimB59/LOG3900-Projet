@@ -1,0 +1,6 @@
+<div *ngIf="isOn" class="width-20">
+    <div mat-dialog-title class="title">{{this.translate.getTranslation("reception")}}</div>
+    <select (change)="onSelectionChange($event)" [(ngModel)]="selectedValue">
+        <option *ngFor="let player of this.lobbyService.playersObserver" [value]="player">{{player}}</option>
+      </select>
+</div>

@@ -1,0 +1,15 @@
+<div class="container">
+    <div mat-dialog-title>{{translateService.getTranslation('Enter new pseudo')}}</div>
+    <div mat-dialog-content class="content">
+        <mat-form-field appearance="outline">
+            <mat-label>{{ translateService.getTranslation('Pseudo') }}</mat-label>
+            <input matInput [(ngModel)]="newPseudo" required (keyup.enter)="sendPseudoChangeRequest()" placeholder="BobSinclair">
+            <mat-error>{{ translateService.getTranslation('Pseudo required') }}</mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>{{ translateService.getTranslation('Cancel') }}</button>
+        <button mat-raised-button [disabled]="!isValidPseudo()" (click)="sendPseudoChangeRequest()">{{ translateService.getTranslation('Confirm') }}</button>
+    </div>
+</div>
+

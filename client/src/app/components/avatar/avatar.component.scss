@@ -1,0 +1,80 @@
+$primary-color: #212121; //Gray 900
+$blue-accent-color: #2962FF; //Blue A700
+$blue-accent-color-darken: darken($blue-accent-color, 15%);
+$red-accent-color: red;
+$red-accent-color-darken: darken($red-accent-color, 15%);
+
+.avatar-container {
+    position: relative;
+    width: fit-content;
+}
+
+.red-background {
+    background-color: $red-accent-color;
+
+    &:hover {
+        transition: all .25s;
+        background-color: $red-accent-color-darken;
+    }
+}
+
+.blue-background {
+    background-color: $blue-accent-color;
+
+    &:hover {
+        transition: all .25s;
+        background-color: $blue-accent-color-darken;
+    }
+}
+
+.green-background {
+    background-color: green;
+
+    &:hover {
+        transition: all .25s;
+        background-color: darken(green, 15%);
+    }
+}
+
+.image-container {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    background-position: center;
+    background-size: cover;
+
+    &.avatar-placeholder{
+        background-image: url('~src/assets/images/avatar-placeholder.png');
+    }
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.icon-wrapper {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    padding: .35rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 75%;
+    z-index: 2;
+    cursor: pointer;
+
+    .icon {
+        color: white;
+    }
+
+    input[type='file'] {
+        display: none;
+    }
+}

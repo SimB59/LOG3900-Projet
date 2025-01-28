@@ -1,0 +1,17 @@
+<div class="selection" [ngClass]="themeService.isDarkTheme() ? 'dark-background white-text' : 'selection-background'">
+    <header class="header">
+        <button mat-raised-button class="btn-selection home" routerLink="/home" title="Accueil"><mat-icon [inline]="true">home</mat-icon></button>
+        <span id="title-observer-page">{{translationService.getTranslation('Observer')}}</span>
+    </header>
+    <div class="game-container-obs" *ngFor="let entry of mapToArray(this.lobbyService.observerGames)">
+        <div class="text-obs-container">
+            <span class="text title"> {{entry[0]}}</span>
+            <span class="text"> player Count : {{entry[1].playerCount}}</span>
+            <span class="text"> observer Count : {{entry[1].observerCount}}</span>
+        </div>
+        <button mat-raised-button class="btn-main" (click)="this.lobbyService.joinObserverGame(entry[0], entry[1].cardId, entry[1].players)">Join</button>
+    </div>  
+    <div *ngIf="mapToArray(this.lobbyService.observerGames).length === 0" class="no-content-container">
+        <div class="no-content"><mat-icon [inline]="true" class="error-icon">error</mat-icon>{{translationService.getTranslation('No cards available')}}</div>
+    </div>
+</div>

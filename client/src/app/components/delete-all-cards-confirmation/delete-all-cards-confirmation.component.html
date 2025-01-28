@@ -1,0 +1,6 @@
+<div mat-dialog-title class="title">{{translateService.getTranslation('Delete all game cards')}}</div>
+<mat-dialog-content>{{translateService.getTranslation('Are you sure you want to delete all game cards?')}}</mat-dialog-content>
+<mat-dialog-actions class="button-container">
+    <button mat-raised-button mat-dialog-close>{{translateService.getTranslation('Back')}}</button>
+    <button mat-raised-button mat-dialog-close (click)="this.cardChangeService.deleteAllCards()">{{translateService.getTranslation('Confirm')}}</button>
+</mat-dialog-actions>

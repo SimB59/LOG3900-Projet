@@ -1,0 +1,9 @@
+<div mat-dialog-title>{{translationService.getTranslation('Select an image')}}</div>
+<mat-dialog-content class="container">
+    <div *ngFor="let avatar of avatarOptions">
+        <img [src]="avatar" alt="Avatar option" class="image" (click)="selectAvatar(avatar)"/>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>{{translationService.getTranslation('Cancel')}}</button>
+</mat-dialog-actions>

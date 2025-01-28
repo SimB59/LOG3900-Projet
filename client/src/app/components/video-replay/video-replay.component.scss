@@ -1,0 +1,44 @@
+.video {
+    display: grid;
+    grid-auto-flow: column;
+    width: 50%;
+    justify-content: space-around;
+}
+.video-replay {
+    border-radius: 15px;
+    border: 2px solid #000000;
+    width: -webkit-fill-available;
+    min-height: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.628);
+    justify-content: space-around;
+    align-items: center;
+    margin: 2px;
+    cursor: pointer;
+  }
+  
+  .video-replay:hover {
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .dark-video-replay {
+    border-radius: 15px;
+    border: 2px solid rgb(222 184 135 / 30%);
+    width: -webkit-fill-available;
+    min-height: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    background-color: #17436f;
+    color: orange;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2px;
+    cursor: pointer;
+  }
+  
+  .dark-video-replay:hover {
+    background-color: #122f4d;
+  }

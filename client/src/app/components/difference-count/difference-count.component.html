@@ -1,0 +1,2 @@
+<p id="player-name" [ngClass]="themeService.isDarkTheme() ? 'dark-mode':'light-mode'">{{playerName + " (" + rank + ")"}}</p>
+<p *ngIf="!isLimited" id="difference-count" [ngClass]="themeService.isDarkTheme() ? 'dark-mode':'light-mode'">{{differenceFoundNumber}}</p> 

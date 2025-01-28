@@ -1,0 +1,147 @@
+<div class="background" [ngClass]="themeService.isDarkTheme() ? 'split-dark-background': 'split-background'">
+    <header class="header">
+        <button mat-raised-button class="btn home" routerLink="/home" title="{{translateService.getTranslation('Home')}}" (click)="accountService.resetOtherPlayerData()"><mat-icon
+                [inline]="true">home</mat-icon></button>
+        <span id="title-profile-page">{{ translateService.getTranslation('Profile') }}</span>
+        <div class="logout-and-toggles" *ngIf="aUserIsConnected() && !accountService.isConsultingProfile()">
+            <button mat-raised-button class="btn" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" (click)="disconnect()">{{ translateService.getTranslation('Disconnect') }}</button>
+            <div class="toggle-container">
+                <app-toggle [preference]="themeService.currentTheme"></app-toggle>
+                <app-toggle [preference]="translateService.currentLanguage"></app-toggle>
+            </div>
+        </div>
+    </header>
+    <div class="content-container">
+        <div class="profile-container" [ngClass]="{ 'dark-container-background': themeService.isDarkTheme()}">
+            <div *ngIf="accountService.isConsultingProfile(); then otherProfile; else self"></div>
+            <ng-template #otherProfile>
+                <div class="identity">
+                    <div class="text">{{ this.accountService.profileConsulting.pseudo }}</div>
+                    <app-avatar class="avatar" [size]="'200px'" [allowModification]="false" [inputAvatar]="accountService.profileConsulting.accountId"></app-avatar>
+                    <div class="text">{{ translateService.getTranslation('Level') }} {{ this.accountService.profileConsulting.accountLevel + " (" + this.findAccountRankName(this.accountService.profileConsulting.accountRank) + ")"}}</div>
+                </div>
+                <div class="make-it-look-right">
+                    <div class="profile-buttons-container">
+                        <button mat-raised-button class="btn profile-action" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" (click)="accountService.resetOtherPlayerData()">{{translateService.getTranslation('View my profile')}}</button>
+                        <button mat-raised-button class="btn profile-action" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" routerLink="/friends" title="{{ translateService.getTranslation('View friends list') }}">{{ translateService.getTranslation('Friends') }}</button>
+                    </div>
+                    <div *ngIf="accountService.profileConsulting.accountStats" class="profile-info" [ngClass]="{ 'dark-info': themeService.isDarkTheme()}">
+                        <div class="profile-info-item">
+                            <p>{{ translateService.getTranslation('Games played') }}</p>
+                            <p>{{accountService.profileConsulting.accountStats.gamesPlayed}}</p>
+                        </div>
+                        <div class="profile-info-item">
+                            <p>{{ translateService.getTranslation('Games won') }}</p>
+                            <p>{{accountService.profileConsulting.accountStats.gamesWon}}</p>
+                        </div>
+                        <div class="profile-info-item">
+                            <p>{{ translateService.getTranslation('Mean differences found per game') }}</p>
+                            <p>{{accountService.profileConsulting.accountStats.meanDifferencesFoundPerGame}}</p>
+                        </div>
+                        <div class="profile-info-item">
+                            <p>{{ translateService.getTranslation('Time mean per game') }}</p>
+                            <p>{{accountService.profileConsulting.accountStats.timeMeanPerGame}}</p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #self>
+                <div class="identity">
+                    <div class="text">{{ this.accountService.pseudo }}</div>
+                    <div class="avatar-input-container">
+                        <app-avatar #avatarComponent class="avatar" [size]="'200px'" [allowModification]="false"></app-avatar>
+                        <label for="avatar-input" class="avatar-overlay" title="{{ translateService.getTranslation('Modify avatar') }}" style="width: 200px; height: 200px;">
+                            <mat-icon>edit</mat-icon>
+                            <input type="file" id="avatar-input" accept="image/jpeg, image/jpg, image/png" style="display: none" (change)="openAvatarChange($event)"/>
+                        </label>
+                    </div>
+                    <div class="text">{{ translateService.getTranslation('Level') }} {{ this.accountService.accountData.accountLevel + " (" + this.findAccountRankName(this.accountService.accountData.accountRank) + ")"}}</div>
+                </div>
+                <div class="make-it-look-right">
+                    <div class="profile-buttons-container" *ngIf="aUserIsConnected()">
+                        <button mat-raised-button class="btn profile-action" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" (click)="openPseudoChange()">{{ translateService.getTranslation('Update Pseudo') }}</button>
+                        <button mat-raised-button class="btn profile-action" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" routerLink="/friends" title="{{ translateService.getTranslation('View friends list') }}">{{ translateService.getTranslation('Friends') }}</button>
+                    </div>
+                    <div *ngIf="accountService.accountData.accountStats" class="profile-info" [ngClass]="{ 'dark-info': themeService.isDarkTheme()}">
+                        <div class="profile-info-item">
+                            <p>{{ translateService.getTranslation('Games played') }}</p>
+                            <p>{{accountService.accountData.accountStats.gamesPlayed}}</p>
+                        </div>
+                        <div class="profile-info-item">
+                            <p>{{ translateService.getTranslation('Games won') }}</p>
+                            <p>{{accountService.accountData.accountStats.gamesWon}}</p>
+                        </div>
+                        <div class="profile-info-item">
+                            <p>{{ translateService.getTranslation('Mean differences found per game') }}</p>
+                            <p>{{accountService.accountData.accountStats.meanDifferencesFoundPerGame}}</p>
+                        </div>
+                        <div class="profile-info-item">
+                            <p>{{ translateService.getTranslation('Time mean per game') }}</p>
+                            <p>{{accountService.accountData.accountStats.timeMeanPerGame}}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </ng-template>
+        </div>
+
+        <div class="parent-container">
+            <div class="list-container activity" [ngClass]="{ 'dark-container-background': themeService.isDarkTheme()}">
+                <h2>{{ translateService.getTranslation('Activity') }}</h2>
+                <div class="list-wrapper">
+                    <div class="historique-list">
+                        <div *ngIf="accountService.isConsultingProfile(); then otherConnections; else selfConnections"></div>
+                        <ng-template #otherConnections>
+                            <div *ngFor="let connection of accountService.profileConsultingConnections" [ngClass]="themeService.isDarkTheme() ? 'dark-historique-item': 'historique-item'">
+                                <p>{{connection.connectionType}}</p>
+                                <p>{{connection.date}}</p>
+                                <p>{{connection.time}}</p>
+                            </div>
+                        </ng-template>
+                        <ng-template #selfConnections>
+                            <div *ngFor="let connection of accountService.accountConnections" [ngClass]="themeService.isDarkTheme() ? 'dark-historique-item': 'historique-item'">
+                                <p>{{connection.connectionType}}</p>
+                                <p>{{connection.date}}</p>
+                                <p>{{connection.time}}</p>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            <div class="list-container historique" [ngClass]="{ 'dark-container-background': themeService.isDarkTheme()}">
+                <h2>{{ translateService.getTranslation('Game history') }}</h2>
+                <div class="list-wrapper">
+                    <div class="historique-list">
+                        <div *ngIf="accountService.isConsultingProfile(); then otherHistory; else selfHistory"></div>
+                        <ng-template #otherHistory>
+                            <div class="no-content" *ngIf="accountService.profileConsultingGameHistory.length === 0">
+                                {{translateService.getTranslation('No game played')}}
+                            </div>
+                            <div *ngFor="let game of accountService.profileConsultingGameHistory" [ngClass]="themeService.isDarkTheme() ? 'dark-historique-item': 'historique-item'">
+                                <p>{{game.isWinner ? translateService.getTranslation("Winner") : translateService.getTranslation("Loser")}}</p>
+                                <p>{{translateService.getTranslation(game.firstMode)}}</p>
+                                <p>{{game.date}}</p>
+                                <p>{{game.time}}</p>
+                                <!-- <p>{{game.duration}}</p>
+                                <p>{{game.numberOfDifferenceFound}}</p> -->
+                            </div>
+                        </ng-template>
+                        <ng-template #selfHistory>
+                            <div class="no-content" *ngIf="accountService.accountGameHistory.length === 0">
+                                {{translateService.getTranslation('No game played')}}
+                            </div>
+                            <div *ngFor="let game of accountService.accountGameHistory" [ngClass]="themeService.isDarkTheme() ? 'dark-historique-item': 'historique-item'">
+                                <p>{{game.isWinner ? translateService.getTranslation("Winner") : translateService.getTranslation("Loser")}}</p>
+                                <p>{{translateService.getTranslation(game.firstMode)}}</p>
+                                <p>{{game.date}}</p>
+                                <p>{{game.time}}</p>
+                                <!-- <p>{{game.duration}}</p>
+                                <p>{{game.numberOfDifferenceFound}}</p> -->
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

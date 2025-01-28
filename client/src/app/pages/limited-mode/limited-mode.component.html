@@ -1,0 +1,23 @@
+<div class="selection main-container" [ngClass]="themeService.isDarkTheme() ? 'dark-background white-text' : 'selection-background'">
+    <header class="header">
+        <button mat-raised-button class="btn-selection home" routerLink="/home" title="Accueil"><mat-icon [inline]="true">home</mat-icon></button>
+        <span id="title-selection-page">{{translateService.getTranslation('Selection menu')}}</span>
+    </header>
+    <div *ngIf="this.cardChangeService.areCardsToPlay; then showCards; else noCards"></div>
+        <ng-template #showCards>
+            <div class="btn-main-container center">
+                <button mat-raised-button class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" *ngIf="this.cardChangeService.isLimitedEnable && !this.gameService.lobbyWaitingVisibility" routerLink="/options/limited/lobbies">{{translateService.getTranslation('See lobbies')}}</button>
+                <!-- <button mat-raised-button class="btn-main" *ngIf="this.cardChangeService.isLimitedEnable && !this.gameService.lobbyWaitingVisibility" (click)="this.cardChangeService.loadGame({isSolo: false, isClassic: false})">{{translateService.getTranslation('Create COOP')}}</button> -->
+                <button mat-raised-button class="btn-main" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" *ngIf="this.cardChangeService.isLimitedEnable && !this.gameService.lobbyWaitingVisibility" (click)="openCreateLobbyDialog()">{{translateService.getTranslation('Create COOP')}}</button>
+                <div class="loading" *ngIf="this.gameService.lobbyWaitingVisibility">
+                    <mat-spinner [diameter]="70"></mat-spinner>
+                    <span>{{translateService.getTranslation('Loading game')}}</span>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #noCards>
+            <div class="no-content-container">
+                <div class="no-content"><mat-icon [inline]="true" class="error-icon">error</mat-icon>{{translateService.getTranslation('No cards available')}}</div>
+            </div>
+        </ng-template>
+</div>

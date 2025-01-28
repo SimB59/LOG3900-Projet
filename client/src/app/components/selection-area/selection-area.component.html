@@ -1,0 +1,42 @@
+<div *ngIf="isConfigMode; then configuration; else classic"></div>
+    <ng-template #configuration>
+        <div class="config">
+            <div id="options">
+                <!-- <app-game-constants class="btn-config-container constants"></app-game-constants> -->
+                <div class="btn-config-container">
+                    <label class="title">{{translateService.getTranslation('Global actions')}}</label>
+                    <button mat-raised-button class="btn-config" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" id="create" routerLink="/gameCreation" title="{{translateService.getTranslation('Create new card')}}">{{translateService.getTranslation('Create')}}</button>
+                    <!-- <button mat-raised-button class="btn-config" id="history" (click)="openMatchHistory()" title="{{translateService.getTranslation('Consult the history of the games')}}">{{translateService.getTranslation('View history')}}</button>
+                    <button mat-raised-button class="btn-config" (click)="this.openResetAllStatsConfirmation()" [disabled]="!this.cardChangeService.areCardsToPlay" title="{{translateService.getTranslation('Reset cards leaderboard')}}">{{translateService.getTranslation('Reset leaderboards')}}</button> -->
+                    <button mat-raised-button class="btn-config" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" (click)="this.openDeleteAllCardsConfirmation()" [disabled]="!this.cardChangeService.areCardsToPlay" title="{{translateService.getTranslation('Delete all game cards')}}">{{translateService.getTranslation('Delete')}}</button>
+                </div>
+            </div>
+            
+            <div *ngIf="this.cardChangeService.areCardsToPlay; then showCards; else noCards"></div>
+                <ng-template #showCards>
+                    <div id="cards-container">
+                        <app-card *ngFor="let card of cardDataArray; let i = index" class="app-card" [index]="i" [viewMode]="viewMode" [card]="card" (playEvent)="cardChangeService.loadGame({isSolo: true, isClassic: true}, i)" (multiplayerEvent)="this.cardChangeService.loadGame({isSolo: false, isClassic: true}, i)"></app-card>
+                    </div>
+                </ng-template>
+                <ng-template #noCards>
+                    <div class="no-content-container">
+                        <div class="no-content"><mat-icon [inline]="true" class="error-icon">error</mat-icon>{{translateService.getTranslation('No cards available')}}</div>
+                    </div>
+                </ng-template>
+        </div>
+        
+    </ng-template>
+<ng-template #classic>
+    <div *ngIf="this.cardChangeService.areCardsToPlay; then showCards; else noCards"></div>
+            <ng-template #showCards>
+                <div id="cards-container">                    
+                    <!-- <app-card *ngFor="let card of cardDataArray; let i = index" class="app-card" [index]="i" [card]="card" (playEvent)="cardChangeService.loadGame({isSolo: true, isClassic: true}, i)" (multiplayerEvent)="this.cardChangeService.loadGame({isSolo: false, isClassic: true}, i)"></app-card> -->
+                    <app-card *ngFor="let card of cardDataArray; let i = index" class="app-card" [index]="i" [card]="card" (playEvent)="cardChangeService.loadGame({isSolo: true, isClassic: true}, i)" (multiplayerEvent)="this.openCreateLobbyDialog(i)"></app-card>
+                </div>
+            </ng-template>
+            <ng-template #noCards>
+                <div class="no-content-container">
+                    <div class="no-content"><mat-icon [inline]="true" class="error-icon">error</mat-icon>{{translateService.getTranslation('No cards available')}}</div>
+                </div>
+            </ng-template>
+</ng-template>

@@ -1,0 +1,27 @@
+<div class="avatar-container">
+    <div class="image-container" *ngIf="fileIsSet(); else placeholder"
+    [ngStyle]="{backgroundImage: 'url(' + image + ')'}" [style.height]="this.size" [style.width]="this.size">
+    </div>
+
+    <ng-template #placeholder>
+        <div class="image-container avatar-placeholder" [style.height]="this.size" [style.width]="this.size">
+        </div>
+    </ng-template>
+
+    <div *ngIf="this.allowModification">
+        <div class="icon-wrapper right" *ngIf="fileIsSet(); else noFile" [ngClass]="'red-background'" (click)="clearFile()" title="{{translateService.getTranslation('Delete')}}">
+            <mat-icon class="icon">delete</mat-icon>
+        </div>
+        <ng-template #noFile>
+                <div *ngIf="!fileIsSet()" class="icon-wrapper left" [ngClass]="'green-background'" title="{{translateService.getTranslation('Select from images selection')}}">
+                    <mat-icon class="icon" (click)="showSelection()">collections</mat-icon>
+                </div>
+            <label for="avatar-input-file">
+                <div class="icon-wrapper right" [ngClass]="'blue-background'" title="{{translateService.getTranslation('Upload an image')}}">
+                    <input type="file" id="avatar-input-file" accept="image/jpeg, image/jpg, image/png" (change)="onFileChange($event)"/>
+                    <mat-icon class="icon">insert_drive_file</mat-icon>
+                </div>
+            </label>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<!-- il faudra afficher ici les informations de la vidéo replay, peut-être la date de création, le nom du joueur qui partage la vidéo, le nom de la vidéo, etc. -->
+<div *ngIf="this.videoReplay.shouldDisplay" (click)="launchVideoReplay()" [ngClass]="themeService.isDarkTheme() ? 'dark-video-replay': 'video-replay'">
+    <div class="video">
+        <div>{{this.videoReplay.playerSharingName + ' '}}</div>
+        <div>{{this.videoReplay.cardName + ' '}}</div>
+        <div>{{ this.videoReplay.date}}</div>
+    </div>
+    <mat-checkbox *ngIf="isOwner" [ngModel]="this.videoReplay.isPublic" class="example-margin bold" value="{{videoReplay.isPublic}}" (click)="changeVisibility($event)">{{translationService.getTranslation('Public')}}</mat-checkbox>
+    <button *ngIf="isOwner" mat-raised-button class="btn" (click)="deleteVideoReplay($event)">{{translationService.getTranslation('Delete')}}</button>
+</div>

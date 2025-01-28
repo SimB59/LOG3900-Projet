@@ -1,0 +1,6 @@
+<div mat-dialog-title class="title">{{translateService.getTranslation('Reset cards leaderboard')}}</div>
+<mat-dialog-content>{{translateService.getTranslation('Delete leaderboards confirmation message')}}</mat-dialog-content>
+<mat-dialog-actions class="button-container">
+    <button mat-raised-button mat-dialog-close>{{translateService.getTranslation('Back')}}</button>
+    <button mat-raised-button mat-dialog-close (click)="this.cardChangeService.cardStatsReset()">{{translateService.getTranslation('Confirm')}}</button>
+</mat-dialog-actions>

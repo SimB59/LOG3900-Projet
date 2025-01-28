@@ -1,0 +1,27 @@
+<div class="card-component-grid">
+    <div class="text title">{{ this.card.title }}</div>
+    <div class="text">{{this.translationService.getTranslation('Difference count')}} : {{ this.card.differences.length }} </div>
+    <div *ngIf="isLookingForGame()">
+        <app-lobby [index]="this.index" [card]="this.card" [gameMode]="this.gameMode"></app-lobby>   <!-- Modification par Antoine et Sidney 2024-03-07-->
+    </div>
+    <div *ngIf="isInLobby; then lobby; else everythingElse" ></div>
+    <ng-template #lobby>
+        <img id="card" [src]="this.imageSource" alt="IMAGE"></ng-template>
+    <ng-template #everythingElse>
+    <img id="card" [src]="this.imageSource" alt="IMAGE">
+    <div *ngIf="isConfigMode; then configuration; else classic"></div>
+        <ng-template #configuration>
+            <div class="buttons-container">
+                <button mat-raised-button class="btn-card" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" id="delete" (click)="this.cardChangeService.cardDeletion(this.cardId)" title="{{this.translationService.getTranslation('Delete card')}} {{ this.card.title }}">{{translationService.getTranslation('Delete')}}</button>
+            </div>
+            <!-- <div class="buttons-container">
+                <button mat-raised-button class="btn-card" id="restore" (click)="this.cardChangeService.cardStatsReset(this.cardId)" title="{{this.translationService.getTranslation('Reset card leaderboard')}} {{ this.card.title }}">{{translationService.getTranslation('Reset')}}</button>
+            </div> -->
+        </ng-template>
+        <ng-template #classic>
+            <div class="buttons-container">
+                <button #multiplayerButton mat-raised-button id="joinButton" class="btn-card" [ngClass]="themeService.isDarkTheme() ? 'dark-btn':'light-btn'" (click)="this.multiplayerEvent.emit(!isMultiplayerState())">{{this.translationService.getTranslation('Create')}}</button>
+            </div>
+        </ng-template>
+    </ng-template>
+</div>

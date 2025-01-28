@@ -1,0 +1,15 @@
+<div class="grid-container">
+    <div class="canva-container modified">
+        <canvas class="canvas" #canvasModified [attr.width]="width" [attr.height]="height"></canvas>
+        <canvas class="canvas" #canvasModifiedObs (click)="this.lobbyService.gameService.validateDifference($event)" [attr.width]="width" [attr.height]="height" style="position: absolute; top: 0; left: 0;"></canvas>
+        <canvas *ngIf="this.isObserverMode() && this.coolDownOver" class="canvas modified" #canvasModifiedObsLayer appRectangleSelect (selectedPixels)="onSelectedPixels($event, false)" [attr.width]="width" [attr.height]="height" style="position: absolute; top: 0; left: 0;"></canvas>
+    </div>    
+    <div class="canva-container original" >
+        <canvas class="canvas" #canvasOriginal [attr.width]="width" [attr.height]="height"></canvas>
+        <canvas class="canvas" #canvasOriginalObs (click)="this.lobbyService.gameService.validateDifference($event)" [attr.width]="width" [attr.height]="height" style="position: absolute; top: 0; left: 0;"></canvas>
+        <canvas *ngIf="this.isObserverMode() && this.coolDownOver" class="canvas" #canvasOriginalObsLayer appRectangleSelect (selectedPixels)="onSelectedPixels($event, true)" [attr.width]="width" [attr.height]="height" style="position: absolute; top: 0; left: 0;"></canvas>
+    </div>
+</div>
+<span class="canva-title" *ngIf="this.isObserverMode() && !this.coolDownOver">{{this.translationService.getTranslation("Cooldown")}}</span>
+<!-- Not need anymore, to fit with light client version, it got moved to the middle of the screen -- Sidney 28/03/2024 -->
+<!-- <span #error id="error" *ngIf="this.gameService.errorVisibility" [ngStyle]="{left: this.gameService.errorPosition.x.toString() + 'px', top: this.gameService.errorPosition.y.toString() + 'px'}">{{translateService.getTranslation('ERROR')}}</span> -->

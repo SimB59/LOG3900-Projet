@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="header">
+        <app-toggle [preference]="themeService.currentTheme"></app-toggle>
+        <div mat-dialog-title>{{translateService.getTranslation('Authentication')}}</div>
+        <app-toggle [preference]="translateService.currentLanguage"></app-toggle>
+    </div>
+    <mat-dialog-content class="content">
+        <mat-form-field appearance="outline">
+            <mat-label>{{translateService.getTranslation('Pseudo')}}</mat-label>
+            <input matInput [(ngModel)]="pseudo" required (keyup.enter)="loginUser()" placeholder="{{placeholderPseudo}}">
+            <mat-error>{{translateService.getTranslation('Pseudo required')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>{{translateService.getTranslation('Password')}}</mat-label>
+            <input type="password" matInput [(ngModel)]="password" required (keyup.enter)="loginUser()">
+            <mat-error>{{translateService.getTranslation('Password required')}}</mat-error>
+        </mat-form-field>
+        <div class="forgot-password-group">
+            <a class="forgot-password" (click)="openPasswordChange()">{{translateService.getTranslation('Forgot password')}}</a>
+        </div>
+        
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button (click)="loginUser()" [disabled]="!areFieldsValid()">{{translateService.getTranslation('Log in')}}</button>
+        <button mat-raised-button (click)="openCreateAccountDialog()">{{translateService.getTranslation('Create account')}}</button>
+    </mat-dialog-actions>
+</div>

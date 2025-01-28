@@ -1,0 +1,5 @@
+<router-outlet></router-outlet>
+<div #chatboxParent class="chatbox-parent" *ngIf="aUserIsConnected()" [class.hidden]="isChatboxHidden">
+    <div class="hide-button" *ngIf="showHideButton" (click)="toggleChatboxVisibility()" [class.unhide]="isChatboxHidden" [class.hide]="!isChatboxHidden" title="{{ isChatboxHidden ? translateService.getTranslation('Show chat') : translateService.getTranslation('Hide chat')}}"></div>
+    <app-chat-box [isGlobal]="true" [parent]="chatboxParent" (isAttachedEmitter)="isChatDetach($event)"></app-chat-box>
+</div>

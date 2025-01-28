@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="header">
+        <app-toggle class="theme-toggle" [preference]="themeService.currentTheme"></app-toggle>
+        <div mat-dialog-title>{{ translateService.getTranslation('Account creation') }} <i>{{ pseudo }}</i></div>
+        <app-toggle class="language-toggle" [preference]="translateService.currentLanguage"></app-toggle>
+    </div>
+    <div mat-dialog-content class="content">
+        <div class="field-group">
+            <mat-form-field appearance="outline" class="input-field">
+                <mat-label>{{ translateService.getTranslation('Email') }}</mat-label>
+                <input matInput [(ngModel)]="email" required (keyup.enter)="createAccount()" placeholder="{{placeholderEmail}}">
+                <mat-error>{{ translateService.getTranslation('Email is required') }}</mat-error>
+                <mat-hint class="mat-error" *ngIf="!isValidEmail()">{{translateService.getTranslation('Email must not have more than')}} {{ maxLengthField }} {{translateService.getTranslation('characters')}}</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="input-field">
+                <mat-label>{{translateService.getTranslation('Password')}}</mat-label>
+                <input type="password" matInput [(ngModel)]="password" required (keyup.enter)="createAccount()">
+                <mat-error>{{translateService.getTranslation('Password required')}}</mat-error>
+                <mat-hint class="mat-error" *ngIf="!isValidPassword()">{{translateService.getTranslation('Password must have at least')}} {{ minLengthPassword }} {{translateService.getTranslation('characters')}}</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="input-field">
+                <mat-label>{{translateService.getTranslation('Confirm password')}}</mat-label>
+                <input type="password" matInput [(ngModel)]="confirmPassword" required (keyup.enter)="createAccount()">
+                <mat-error>{{translateService.getTranslation('Password required')}}</mat-error>
+                <mat-hint class="mat-error" *ngIf="!isSamePassword()">{{translateService.getTranslation('Passwords do not match')}}</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="field-group">
+            <app-avatar #avatar [size]="'125px'" [allowModification]="true"></app-avatar>
+            <mat-form-field appearance="outline" class="input-field">
+                <mat-label>{{translateService.getTranslation('Pseudo')}}</mat-label>
+                <input matInput [(ngModel)]="pseudo" required (keyup.enter)="createAccount()">
+                <mat-error>{{translateService.getTranslation('Pseudo required')}}</mat-error>
+                <mat-hint class="mat-error" *ngIf="pseudo.length > maxLengthField">{{translateService.getTranslation('Pseudo must not have more than')}} {{ maxLengthField }} {{translateService.getTranslation('characters')}}</mat-hint>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>{{translateService.getTranslation('Back')}}</button>
+        <button mat-raised-button (click)="createAccount()" [disabled]="!areFieldsValid()">{{translateService.getTranslation('Create account')}}</button>
+    </div>
+</div>
